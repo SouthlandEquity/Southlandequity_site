@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Business Owners &mdash; Southland Equity</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+:root{
+  --green:#27534B;
+  --green-mid:#3B7D71;
+  --accent:#6EC46E;
+  --near-white:#E8EEE7;
+  --bg-light:#F4F5EF;
+  --bg-warm:#EFEFE8;
+  --text-dark:#1a2e1a;
+  --text-body:#2e3d2e;
+  --text-muted:#5a6e5a;
+  --border:#BED4CC;
+  --font-display:'Libre Baskerville',Georgia,serif;
+  --font-mono:'IBM Plex Mono',monospace;
+  --font-body:'Inter',sans-serif;
+  --gutter:clamp(40px,5.5vw,80px);
+  --page-max:1440px;
+}
+body{font-family:var(--font-body);background:var(--bg-light);color:var(--text-dark);font-size:16px;line-height:1.6;}
+nav{position:sticky;top:0;z-index:100;background:var(--green);}
+.nav-inner,.container,.footer-inner{max-width:var(--page-max);margin-left:auto;margin-right:auto;padding-left:var(--gutter);padding-right:var(--gutter);}
+.nav-inner{height:72px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-family:var(--font-display);font-size:26px;letter-spacing:0.1em;color:#fff;font-weight:400;text-decoration:none;line-height:1;}
+.nav-menu{display:flex;align-items:center;gap:4px;}
+.nav-item{position:relative;}
+.nav-link{font-family:var(--font-mono);font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#fff;text-decoration:none;padding:9px 16px;border-radius:3px;transition:background 0.15s;display:block;background:none;border:none;}
+.nav-link:hover,.nav-link.active{background:rgba(255,255,255,0.1);}
+.nav-dropdown{display:none;position:absolute;top:calc(100% + 6px);left:0;background:var(--green);border:0.5px solid rgba(255,255,255,0.18);border-radius:4px;min-width:220px;padding:6px 0;box-shadow:0 8px 32px rgba(0,0,0,0.25);}
+.nav-item:hover .nav-dropdown{display:block;}
+.nav-dropdown a{display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.7);text-decoration:none;padding:10px 18px;transition:color 0.1s,background 0.1s;}
+.nav-dropdown a:hover{color:#fff;background:rgba(255,255,255,0.08);}
+.nav-cta{font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;background:var(--accent);color:var(--green);padding:11px 22px;border-radius:3px;text-decoration:none;font-weight:700;margin-left:16px;transition:opacity 0.15s;}
+.nav-cta:hover{opacity:0.88;}
+.chev{display:inline-flex;align-items:center;margin-left:6px;vertical-align:middle;}
+section{scroll-margin-top:72px;}
+.section-pad{padding-top:100px;padding-bottom:100px;}
+.section-label,.section-label-light{font-family:var(--font-mono);font-size:14px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:32px;display:block;}
+.section-heading{font-family:var(--font-display);font-size:48px;line-height:1.1;color:var(--green);font-weight:400;margin-bottom:16px;text-wrap:balance;}
+.section-heading-light{font-family:var(--font-display);font-size:48px;line-height:1.1;color:#fff;font-weight:400;margin-bottom:16px;text-wrap:balance;}
+.section-sub{font-size:17px;line-height:1.75;color:var(--text-muted);font-weight:300;max-width:600px;margin-bottom:56px;}
+.section-sub-light{font-size:17px;line-height:1.75;color:rgba(255,255,255,0.65);font-weight:300;max-width:600px;margin-bottom:56px;}
+.btn-primary{font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;background:var(--accent);color:var(--green);padding:14px 28px;border-radius:3px;text-decoration:none;font-weight:700;transition:opacity 0.15s;display:inline-flex;align-items:center;gap:6px;}
+.btn-primary:hover{opacity:0.88;}
+.btn-outline{font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;background:transparent;color:#fff;padding:13px 28px;border-radius:3px;text-decoration:none;font-weight:700;border:1px solid rgba(255,255,255,0.35);transition:all 0.15s;display:inline-flex;align-items:center;gap:6px;}
+.btn-outline:hover{background:rgba(255,255,255,0.1);}
+.btn-ghost{font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--green);text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:color 0.15s;}
+.btn-ghost:hover{color:var(--green-mid);}
+.page-hero{background:var(--green);padding:80px 0 72px;position:relative;overflow:hidden;}
+.page-hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,rgba(255,255,255,0.035) 0,rgba(255,255,255,0.035) 1px,transparent 1px,transparent 14px);}
+.page-hero-inner{position:relative;z-index:2;}
+.page-hero-label{font-family:var(--font-mono);font-size:14px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;}
+.page-hero-heading{font-family:var(--font-display);font-size:60px;line-height:1.05;color:#fff;font-weight:400;text-wrap:balance;margin-bottom:20px;}
+.page-hero-sub{font-size:18px;line-height:1.8;color:rgba(255,255,255,0.75);font-weight:300;max-width:600px;}
+.page-hero-ctas{display:flex;gap:16px;margin-top:36px;}
+footer{background:#1a2e1a;padding:60px 0 36px;position:relative;}
+footer::before{content:"";position:absolute;inset:0;pointer-events:none;}
+.footer-inner{position:relative;z-index:1;}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:56px;}
+.footer-brand{flex-shrink:0;max-width:240px;}
+.footer-logo-link{font-family:var(--font-display);font-size:20px;color:#fff;font-weight:400;letter-spacing:0.08em;margin-bottom:10px;text-decoration:none;display:block;}
+.footer-tagline{font-size:13px;color:rgba(255,255,255,0.35);font-weight:300;line-height:1.6;}
+.footer-nav-group{display:flex;gap:48px;}
+.footer-nav-group > div{min-width:120px;}
+.footer-col-head{font-family:var(--font-mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;}
+.footer-links{display:flex;flex-direction:column;gap:10px;}
+.footer-links a{font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none;font-weight:300;transition:color 0.15s;}
+.footer-links a:hover{color:#fff;}
+.footer-bottom{border-top:0.5px solid rgba(255,255,255,0.1);padding-top:28px;display:flex;justify-content:space-between;align-items:center;}
+.footer-legal{font-family:var(--font-mono);font-size:8px;letter-spacing:0.1em;color:rgba(255,255,255,0.25);}
+.footer-legal-links{display:flex;gap:24px;}
+.footer-legal-links a{font-family:var(--font-mono);font-size:8px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.25);text-decoration:none;transition:color 0.15s;}
+.footer-legal-links a:hover{color:rgba(255,255,255,0.5);}
+.faq-list{margin-top:8px;}
+.faq-item{border-bottom:0.5px solid var(--border);cursor:pointer;}
+.faq-item:first-child{border-top:0.5px solid var(--border);}
+.faq-item:last-child{border-bottom:none;}
+.faq-q{font-size:16px;color:var(--green);font-weight:400;padding:22px 0;display:flex;justify-content:space-between;align-items:center;gap:16px;}
+.faq-q::after{content:'+';font-family:var(--font-mono);font-size:16px;color:var(--green-mid);flex-shrink:0;}
+.faq-item.open .faq-q::after{content:'\2212';}
+.faq-a{display:none;padding:0 0 22px;font-size:15px;line-height:1.8;color:var(--text-body);font-weight:300;max-width:680px;}
+.faq-item.open .faq-a{display:block;}
+.faq-footer{margin-top:0;padding-top:44px;border-top:0.5px solid var(--border);display:flex;align-items:center;gap:20px;}
+.faq-footer-text{font-size:15px;color:var(--text-muted);font-weight:300;}
+.faq-footer-cta{font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;background:var(--accent);color:var(--green);padding:11px 20px;border-radius:3px;text-decoration:none;white-space:nowrap;font-weight:700;transition:opacity 0.15s;display:inline-flex;align-items:center;gap:8px;}
+.faq-footer-cta:hover{opacity:0.88;}
+
+
+
+.solutions-home-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px;}
+.sol-card{border:0.5px solid rgba(255,255,255,0.15);border-radius:4px;overflow:hidden;display:flex;flex-direction:column;}
+
+.sol-card-top{background:var(--green-mid);padding:40px 36px;transition:opacity 0.15s;}
+.sol-pre{font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:12px;}
+.sol-name{font-family:var(--font-display);font-size:34px;color:#fff;font-weight:500;margin-bottom:14px;line-height:1.1;}
+.sol-tagline{font-size:15px;color:rgba(255,255,255,0.65);font-weight:300;line-height:1.7;}
+.sol-card-bottom{background:var(--bg-light);padding:28px 36px;flex:1;}
+.sol-points{list-style:none;}
+.sol-points li{font-size:14px;line-height:1.75;color:var(--text-body);font-weight:300;padding:8px 0;border-bottom:0.5px solid var(--border);display:flex;align-items:flex-start;gap:10px;}
+.sol-points li:last-child{border-bottom:none;}
+.sol-points li::before{content:'';width:5px;height:5px;background:var(--green-mid);border-radius:50%;flex-shrink:0;margin-top:8px;}
+.pillars-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border);border-radius:4px;overflow:hidden;margin-top:8px;}
+.pillar{background:var(--bg-warm);padding:44px 36px;}
+.pillar-icon{margin-bottom:20px;}
+
+.pillar-head{font-family:var(--font-display);font-size:22px;color:var(--green);font-weight:400;margin-bottom:14px;line-height:1.2;text-wrap:balance;}
+.pillar-body{font-size:15px;line-height:1.75;color:var(--text-muted);font-weight:300;}
+.criteria-table{width:100%;border-collapse:collapse;margin-top:8px;}
+.criteria-table td{padding:18px 0;border-bottom:0.5px solid var(--border);font-size:15px;color:var(--text-body);line-height:1.5;}
+.criteria-table td:first-child{font-family:var(--font-mono);font-size:15px;letter-spacing:0.06em;text-transform:uppercase;color:var(--green-mid);width:240px;padding-right:24px;}
+.criteria-table tr:last-child td{border-bottom:none;}
+.journey-steps{display:flex;flex-direction:column;}
+.journey-step{display:grid;grid-template-columns:60px 1fr;gap:32px;align-items:stretch;}
+.step-marker{display:flex;flex-direction:column;align-items:center;padding-top:40px;}
+.step-circle{width:40px;height:40px;border-radius:50%;background:var(--accent);box-shadow:0 2px 12px rgba(0,0,0,0.18);display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:1;}
+.step-num{font-family:var(--font-mono);font-size:15px;color:var(--green);font-weight:700;line-height:1;}
+.step-line{width:1.5px;flex:1;background:rgba(255,255,255,0.2);margin-top:6px;}
+.journey-step:last-child .step-line{display:none;}
+.step-content{padding:40px 0;}
+.step-title{font-family:var(--font-mono);font-size:13px;letter-spacing:0.08em;color:#fff;font-weight:700;margin-bottom:14px;text-transform:uppercase;text-wrap:balance;}
+.step-body{font-size:15px;line-height:1.8;color:rgba(255,255,255,0.85);font-weight:400;}
+
+/* ── SHARED NAV ── */
+nav{position:sticky;top:0;z-index:100;background:var(--green);}
+.nav-inner,.container,.footer-inner{max-width:var(--page-max);margin-left:auto;margin-right:auto;padding-left:var(--gutter);padding-right:var(--gutter);}
+.nav-inner{height:72px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-family:var(--font-display);font-size:26px;letter-spacing:0.1em;color:#fff;font-weight:400;text-decoration:none;line-height:1;}
+.nav-menu{display:flex;align-items:center;gap:4px;}
+.nav-item{position:relative;}
+.nav-link{font-family:var(--font-mono);font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#fff;text-decoration:none;padding:9px 16px;border-radius:3px;transition:background 0.15s;display:block;cursor:pointer;background:none;border:none;}
+.nav-link:hover,.nav-link.active{background:rgba(255,255,255,0.1);}
+.nav-dropdown{display:none;position:absolute;top:calc(100% + 6px);left:0;background:var(--green);border:0.5px solid rgba(255,255,255,0.18);border-radius:4px;min-width:210px;padding:6px 0;box-shadow:0 8px 32px rgba(0,0,0,0.25);}
+.nav-dropdown::before{content:'';position:absolute;bottom:100%;left:0;width:100%;height:6px;}
+.nav-item:hover .nav-dropdown{display:block;}
+.nav-dropdown a{display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.7);text-decoration:none;padding:10px 18px;transition:color 0.1s,background 0.1s;}
+.nav-dropdown a:hover{color:#fff;background:rgba(255,255,255,0.08);}
+.nav-cta{font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;background:var(--accent);color:var(--green);padding:11px 22px;border-radius:3px;text-decoration:none;font-weight:700;margin-left:16px;transition:opacity 0.15s;}
+.nav-cta:hover{opacity:0.88;}
+.chev{display:inline-flex;align-items:center;margin-left:6px;vertical-align:middle;}
+/* ── SHARED FOOTER ── */
+footer{background:#1a2e1a;padding:60px 0 36px;position:relative;}
+footer::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,rgba(255,255,255,0.018) 0,rgba(255,255,255,0.018) 1px,transparent 1px,transparent 12px);pointer-events:none;}
+.footer-inner{position:relative;z-index:1;}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:56px;}
+.footer-brand{flex-shrink:0;max-width:240px;}
+.footer-logo-link{font-family:var(--font-display);font-size:20px;color:#fff;font-weight:400;letter-spacing:0.08em;text-decoration:none;display:block;margin-bottom:10px;transition:opacity 0.15s;}
+.footer-logo-link:hover{opacity:0.85;}
+.footer-tagline{font-size:13px;color:rgba(255,255,255,0.35);font-weight:300;line-height:1.6;}
+.footer-nav-group{display:flex;gap:48px;}
+.footer-nav-group > div{min-width:120px;}
+.footer-col-head{font-family:var(--font-mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;}
+.footer-links{display:flex;flex-direction:column;gap:10px;}
+.footer-links a{font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none;font-weight:300;transition:color 0.15s;}
+.footer-links a:hover{color:#fff;}
+.footer-bottom{border-top:0.5px solid rgba(255,255,255,0.1);padding-top:28px;display:flex;justify-content:space-between;align-items:center;}
+.footer-legal{font-family:var(--font-mono);font-size:8px;letter-spacing:0.1em;color:rgba(255,255,255,0.25);}
+.footer-legal-links{display:flex;gap:24px;}
+.footer-legal-links a{font-family:var(--font-mono);font-size:8px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.25);text-decoration:none;transition:color 0.15s;}
+.footer-legal-links a:hover{color:rgba(255,255,255,0.5);}
+</style>
+
+
+</head><body><nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Southland Equity</a>
+    <div class="nav-menu">
+      <div class="nav-item">
+        <a href="about.html" class="nav-link">About</a>
+        <div class="nav-dropdown">
+          <a href="about.html#firm">The Firm</a>
+          <a href="about.html#team">Team</a>
+          <a href="about.html#differentiators">Differentiators</a>
+          <a href="about.html#philosophy">Philosophy</a>
+          <a href="about.html#purpose">Our Purpose</a>
+          <a href="about.html#core-values">Core Values</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="owners.html" class="nav-link">Owners</a>
+        <div class="nav-dropdown">
+          <a href="owners.html#criteria">Investment Criteria</a>
+          <a href="owners.html#solutions">Solutions</a>
+          <a href="owners.html#value-creation">How We Create Value</a>
+          <a href="owners.html#journey">The Journey</a>
+          <a href="owners.html#faq">FAQ</a>
+        </div>
+      </div>
+      <a href="blog.html" class="nav-link">Blog</a>
+      <a href="connect.html" class="nav-link">Connect</a>
+      <a href="connect.html" class="nav-cta">Start a Conversation</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="container page-hero-inner">
+    <div class="page-hero-label">For Business Owners</div>
+    <h1 class="page-hero-heading">Everything you need to know before you call.</h1>
+    <p class="page-hero-sub">What we acquire, what to expect from first conversation to close, and the questions we hear most from sellers.</p>
+  </div>
+</div>
+
+<section id="criteria" style="background:var(--bg-light);padding:100px 0;">
+  <div class="container">
+    <div class="section-label">Investment Criteria</div>
+    <h2 class="section-heading">What we&rsquo;re looking for.</h2>
+    <div style="max-width:720px;margin-top:40px;">
+      <table class="criteria-table">
+        <tr><td>EBITDA</td><td>$1 million to $5 million</td></tr>
+        <tr><td>Industries</td><td>Services, manufacturing, and value-added distribution</td></tr>
+        <tr><td>Geography</td><td>Georgia-based businesses</td></tr>
+        <tr><td>Ownership</td><td>Founder and family-owned; no institutional ownership</td></tr>
+        <tr><td>Deal Type</td><td>Full buyouts and majority recapitalizations</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTIONS SECTION (owners page) -->
+<section id="solutions" style="background:var(--green);min-height:100vh;padding-top:0;padding-bottom:160px;">
+  <div class="container" style="padding-top:100px;">
+    <div class="section-label" style="color:var(--accent);margin-bottom:56px;">Solutions</div>
+    <h2 class="section-heading-light">Two ways to work with us.</h2>
+    <div class="solutions-home-grid">
+      <div class="sol-card">
+        <div class="sol-card-top">
+          <div class="sol-pre">Ready to step away?</div>
+          <div class="sol-name">Legacy</div>
+          <div class="sol-tagline">For founders who have built something real and want to exit knowing their business is in the right hands.</div>
+        </div>
+        <div class="sol-card-bottom">
+          <ul class="sol-points">
+            <li>Your core team and company culture stay intact</li>
+            <li>Transition on your terms, at your pace</li>
+            <li>Complete freedom to focus on your next chapter</li>
+            <li>Up to 100% of proceeds delivered at close</li>
+          </ul>
+        </div>
+      </div>
+      <div class="sol-card">
+        <div class="sol-card-top">
+          <div class="sol-pre">Ready to grow?</div>
+          <div class="sol-name">Elevate</div>
+          <div class="sol-tagline">For owners who still have energy for the business but need capital, bandwidth, or a partner to reach the next level.</div>
+        </div>
+        <div class="sol-card-bottom">
+          <ul class="sol-points">
+            <li>Take meaningful liquidity off the table at close</li>
+            <li>Retain a real equity stake in the upside</li>
+            <li>Shared leadership &mdash; the extra bandwidth and experience needed to scale</li>
+            <li>Access to capital, deal flow, and execution for add-on acquisitions</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE CREATE VALUE -->
+<section id="value-creation" style="background:var(--bg-light);min-height:100vh;padding-top:0;padding-bottom:240px;">
+  <div class="container" style="padding-top:100px;">
+    <div class="section-label" style="margin-bottom:56px;">How We Create Value</div>
+    <h2 class="section-heading">The Southland Growth Playbook.</h2>
+    <p class="section-sub" style="max-width:680px;">Every business we acquire gets a tailored version of the same disciplined playbook &mdash; six levers we execute in every company we own to build something bigger, more durable, and more capable over time.</p>
+    <div class="pillars-grid" style="grid-template-columns:1fr 1fr 1fr;">
+      <div class="pillar">
+        <div class="pillar-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 256 256"><path d="M221.35,104.11a8,8,0,0,0-6.57,9.21A88.85,88.85,0,0,1,216,128a87.62,87.62,0,0,1-22.24,58.41,79.66,79.66,0,0,0-36.06-28.75,48,48,0,1,0-59.4,0,79.66,79.66,0,0,0-36.06,28.75A88,88,0,0,1,128,40a88.76,88.76,0,0,1,14.68,1.22,8,8,0,0,0,2.64-15.78,103.92,103.92,0,1,0,85.24,85.24A8,8,0,0,0,221.35,104.11ZM96,120a32,32,0,1,1,32,32A32,32,0,0,1,96,120ZM74.08,197.5a64,64,0,0,1,107.84,0,87.83,87.83,0,0,1-107.84,0ZM237.66,45.66l-32,32a8,8,0,0,1-11.32,0l-16-16a8,8,0,0,1,11.32-11.32L200,60.69l26.34-26.35a8,8,0,0,1,11.32,11.32Z"></path></svg></div>
+        <div class="pillar-head">Right People, Right Seats</div>
+        <div class="pillar-body" style="font-style:italic;color:var(--green-mid);margin-bottom:10px;">Do you have the team to run a larger company?</div>
+        <div class="pillar-body">We build the management depth needed to run a more complex organization &mdash; rigorous hiring, outcome-based job standards, career paths that retain good people, and incentive structures aligned to results. A stronger bench makes the business less dependent on any one person, including the owner.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 256 256"><path d="M224,200h-8V40a8,8,0,0,0-8-8H152a8,8,0,0,0-8,8V80H96a8,8,0,0,0-8,8v40H48a8,8,0,0,0-8,8v64H32a8,8,0,0,0,0,16H224a8,8,0,0,0,0-16ZM160,48h40V200H160ZM104,96h40V200H104ZM56,144H88v56H56Z"></path></svg></div>
+        <div class="pillar-head">The Operating System</div>
+        <div class="pillar-body" style="font-style:italic;color:var(--green-mid);margin-bottom:10px;">Does the business run on systems or on you?</div>
+        <div class="pillar-body">We install a disciplined execution framework &mdash; clear priorities, KPIs, documented processes, and a leadership rhythm that keeps the whole organization aligned and moving. Growth stalls when everything still runs through the founder. The operating system removes that ceiling.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+        <div class="pillar-head">Pricing & Margin</div>
+        <div class="pillar-body" style="font-style:italic;color:var(--green-mid);margin-bottom:10px;">Are you capturing the full value of what you deliver?</div>
+        <div class="pillar-body">Pricing is one of the highest-leverage levers in any business &mdash; every dollar of improvement flows straight to the bottom line with no corresponding cost. We bring a structured approach to pricing, margin visibility, and cost discipline that compounds quickly at the operating level.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div>
+        <div class="pillar-head">Revenue Durability</div>
+        <div class="pillar-body" style="font-style:italic;color:var(--green-mid);margin-bottom:10px;">How predictable is next year&rsquo;s revenue?</div>
+        <div class="pillar-body">We look for every opportunity to shift revenue from transactional to recurring &mdash; service agreements, maintenance contracts, and retainer structures. Predictable revenue makes a business easier to run, easier to finance, and more resilient through any economic cycle.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 256 256"><path d="M230.91,124A8,8,0,0,1,228,134.91l-96,56a8,8,0,0,1-8.06,0l-96-56A8,8,0,0,1,36,121.09l92,53.65,92-53.65A8,8,0,0,1,230.91,124ZM24,80a8,8,0,0,1,4-6.91l96-56a8,8,0,0,1,8.06,0l96,56a8,8,0,0,1,0,13.82l-96,56a8,8,0,0,1-8.06,0l-96-56A8,8,0,0,1,24,80Zm23.88,0L128,126.74,208.12,80,128,33.26ZM232,192H216V176a8,8,0,0,0-16,0v16H184a8,8,0,0,0,0,16h16v16a8,8,0,0,0,16,0V208h16a8,8,0,0,0,0-16Zm-92,23.76-12,7L36,169.09A8,8,0,0,0,28,182.91l96,56a8,8,0,0,0,8.06,0l16-9.33A8,8,0,1,0,140,215.76Z"></path></svg></div>
+        <div class="pillar-head">Add-On Acquisitions</div>
+        <div class="pillar-body" style="font-style:italic;color:var(--green-mid);margin-bottom:10px;">What would you buy to get there faster?</div>
+        <div class="pillar-body">In fragmented industries, the ability to consolidate is one of the most reliable paths to accelerated value. We actively pursue tuck-in acquisitions that add customers, geography, or capabilities &mdash; growth that would take years to build organically, compressed into a single transaction.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 256 256"><path d="M136,112H48a8,8,0,0,0-8,8v88a8,8,0,0,0,8,8h88a8,8,0,0,0,8-8V120A8,8,0,0,0,136,112Zm-8,88H56V128h72Zm88-16v16a16,16,0,0,1-16,16H176a8,8,0,0,1,0-16h24V184a8,8,0,0,1,16,0Zm0-72v32a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Zm0-56V72a8,8,0,0,1-16,0V56H184a8,8,0,0,1,0-16h16A16,16,0,0,1,216,56Zm-64-8a8,8,0,0,1-8,8H112a8,8,0,0,1,0-16h32A8,8,0,0,1,152,48ZM40,80V56A16,16,0,0,1,56,40H72a8,8,0,0,1,0,16H56V80a8,8,0,0,1-16,0Z"></path></svg></div>
+        <div class="pillar-head">Wallet Share</div>
+        <div class="pillar-body" style="font-style:italic;color:var(--green-mid);margin-bottom:10px;">What else can you sell to customers who already trust you?</div>
+        <div class="pillar-body">The hardest part of any business is earning a customer&rsquo;s trust. Once you have it, expanding what you offer them &mdash; adjacent services, tiered packages, seasonal add-ons &mdash; is the highest-return growth available. We identify those opportunities in every business we own and build a systematic path to capture them without adding new customer acquisition cost.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="journey" style="background:var(--green-mid);padding:100px 0;">
+  <div class="container">
+    <div class="section-label-light">The Journey</div>
+    <h2 class="section-heading-light">What to expect from first call to close.</h2>
+    <p class="section-sub-light">From first conversation to closing day, most deals take four to six months. Here is what that process looks like when you work with us &mdash; and what to expect at every step along the way.</p>
+    <div class="journey-steps">
+<div class="journey-step">
+  <div class="step-marker"><div class="step-circle"><span class="step-num">1</span></div><div class="step-line"></div></div>
+  <div class="step-content"><div class="step-title">A Confidential Conversation</div><div class="step-body">Everything starts with a conversation. No paperwork, no obligations, and no one else needs to know it happened. We want to understand what you built, what matters to you, and what a good outcome actually looks like for you personally. You will leave knowing whether we are the right fit &mdash; and we will tell you honestly if we are not.</div></div>
+</div><div class="journey-step">
+  <div class="step-marker"><div class="step-circle"><span class="step-num">2</span></div><div class="step-line"></div></div>
+  <div class="step-content"><div class="step-title">Mutual Confidentiality</div><div class="step-body">Before we go deeper, both parties sign a mutual non-disclosure agreement. This protects you &mdash; your financials, your customers, your employees &mdash; and it protects us. Nothing shared in the process ever leaves the room without your knowledge. We treat this as an obligation, not a formality.</div></div>
+</div><div class="journey-step">
+  <div class="step-marker"><div class="step-circle"><span class="step-num">3</span></div><div class="step-line"></div></div>
+  <div class="step-content"><div class="step-title">Preliminary Offer</div><div class="step-body">Once we have reviewed your financials and have a clear picture of the business, we will put a formal offer in writing. This is a Letter of Intent &mdash; a non-binding document that spells out the proposed price, structure, and key terms. Most sellers receive an LOI within two to six weeks of sharing financials.</div></div>
+</div><div class="journey-step">
+  <div class="step-marker"><div class="step-circle"><span class="step-num">4</span></div><div class="step-line"></div></div>
+  <div class="step-content"><div class="step-title">Due Diligence</div><div class="step-body">This is where we do the work of verifying what we have agreed to in principle. We will review financials, customer contracts, employee records, equipment, and the full operational picture of the business. Due diligence typically runs 30 to 60 days. The total time from a signed LOI to closing day is usually 60 to 120 days.</div></div>
+</div><div class="journey-step">
+  <div class="step-marker"><div class="step-circle"><span class="step-num">5</span></div><div class="step-line"></div></div>
+  <div class="step-content"><div class="step-title">Purchase Agreement</div><div class="step-body">The Purchase Agreement is the binding legal document that finalizes everything. There will be back and forth &mdash; that is normal. A few items consistently come up at this stage: the non-compete agreement, seller financing terms when they are part of the structure, and the final working capital figure confirmed against actual numbers at close. None of these are surprises.</div></div>
+</div><div class="journey-step">
+  <div class="step-marker"><div class="step-circle"><span class="step-num">6</span></div><div class="step-line"></div></div>
+  <div class="step-content"><div class="step-title">Close and Transition</div><div class="step-body">You get paid. We take over. The transition happens on your terms &mdash; whether that means stepping away fully on day one or staying involved through a handoff period at whatever pace works for you. Your employees stay. Your customers experience no disruption. And everything we committed to in writing is exactly what happens.</div></div>
+</div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="background:var(--bg-warm);padding:100px 0;">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-heading">Questions we hear most.</h2>
+    <div style="max-width:760px;margin-top:8px;">
+      <div class="faq-list">
+
+        <div class="faq-item"><div class="faq-q">Do you buy the real estate associated with the business?</div><div class="faq-a">Yes — and we often prefer to. When a seller owns the property the business operates out of, we will evaluate the real estate as part of the transaction and in many cases acquire it alongside the business. Owning the real estate simplifies the deal, eliminates uncertainty around future lease terms, and is generally better for both sides in a long-term hold. If you would rather sell the business and keep the real estate, or work out a leaseback arrangement, we can structure around that as well. Real estate is always a separate conversation from the operating business, and we are flexible on how it gets handled.</div></div>
+        <div class="faq-item"><div class="faq-q">How are deals typically structured?</div><div class="faq-a">Most transactions involve a combination of cash at close and, in some cases, a seller note — a portion of the purchase price paid over time at a fixed interest rate. The mix depends on the size of the deal, the financing involved, and what works for both sides. For Legacy deals, the goal is getting as much cash to you at close as possible. For Elevate deals, you are also retaining equity in the business going forward, so the structure looks different. We will walk you through exactly how we are thinking about structure before you sign anything.</div></div>
+        <div class="faq-item"><div class="faq-q">What is working capital and why does it matter at closing?</div><div class="faq-a">Working capital is the cash and near-cash assets — receivables, inventory, prepaid expenses — that keep a business running day to day. Most purchase agreements include a target working capital amount, meaning the seller delivers the business with a baseline level of these assets in place so the new owner can operate from day one. If working capital at close comes in above the target, the seller keeps the difference. If it comes in below, the purchase price adjusts accordingly. This is not a negotiating tactic — it is how every properly structured transaction works. We explain it in plain terms before you sign anything, and we will walk you through it as many times as needed.</div></div>
+        <div class="faq-item"><div class="faq-q">What if my business depends heavily on me?</div><div class="faq-a">This is one of the most common situations we encounter and it does not disqualify a transaction. Most founder-run businesses have some degree of owner dependence — on relationships, institutional knowledge, or day-to-day decision making. What matters is whether that dependence can be reduced over a reasonable transition period. We work through that openly during diligence, structure the transition accordingly, and in many cases ask sellers to stay involved for a period after close to help transfer those relationships and that knowledge to the team.</div></div>
+        <div class="faq-item"><div class="faq-q">What if my books aren&rsquo;t perfect?</div><div class="faq-a">Most founder-run businesses do not have perfectly organized financials, and that does not disqualify you from a conversation. We have worked through tax returns, bank statements, and owner-adjusted records before. What we need is an honest picture of how the business performs — not a perfectly packaged presentation. If your records need work before a transaction can close, we will tell you what is missing and help you figure out how to get there. Messy books have never killed a deal that was otherwise worth doing.</div></div>
+        <div class="faq-item"><div class="faq-q">What if I&rsquo;m not ready to sell today?</div><div class="faq-a">That is fine. Some of the best conversations we have are with owners who are two or three years away from being ready. Talking early gives you time to understand what a transaction actually looks like, what buyers look for, and what you can do between now and then to put yourself in the best position. There is no pressure and no obligation. If the timing is not right yet, we would rather know you early than meet you for the first time the week you decide to sell.</div></div>
+      </div>
+      <div class="faq-footer"><p class="faq-footer-text">Have a question that isn&rsquo;t answered here?</p><a href="connect.html" class="faq-footer-cta">Start a Conversation</a></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--green);padding:100px 0;">
+  <div class="container">
+    <div style="text-align:center;max-width:640px;margin:0 auto;">
+      <h2 class="section-heading-light">Ready to have a conversation?</h2>
+      <p class="section-sub-light" style="margin-bottom:32px;">No paperwork, no obligations. Just a conversation about your business and what comes next.</p>
+      <a href="connect.html" class="btn-primary">Start a Confidential Conversation <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d='M4.5 2l4.5 4.5-4.5 4.5' stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo-link">Southland Equity</a>
+        <div class="footer-tagline">Acquiring and growing exceptional businesses across Georgia.</div>
+      </div>
+      <div class="footer-nav-group">
+        <div>
+          <div class="footer-col-head">About</div>
+          <div class="footer-links">
+            <a href="about.html#firm">The Firm</a>
+            <a href="about.html#team">Team</a>
+            <a href="about.html#differentiators">Differentiators</a>
+            <a href="about.html#philosophy">Philosophy</a>
+            <a href="about.html#purpose">Our Purpose</a>
+            <a href="about.html#core-values">Core Values</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-head">Owners</div>
+          <div class="footer-links">
+            <a href="owners.html#criteria">Investment Criteria</a>
+            <a href="owners.html#solutions">Solutions</a>
+            <a href="owners.html#value-creation">How We Create Value</a>
+            <a href="owners.html#journey">The Journey</a>
+            <a href="owners.html#faq">FAQ</a>
+            <a href="connect.html">Start a Conversation</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-head">Blog</div>
+          <div class="footer-links">
+            <a href="blog.html">All Posts</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-legal">&copy; 2025 Southland Equity. All rights reserved.</div>
+      <div class="footer-legal-links">
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+document.querySelectorAll('.faq-item').forEach(function(el){
+  el.addEventListener('click',function(){this.classList.toggle('open');});
+});
+</script>
+
+</body></html>

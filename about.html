@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | Southland Equity</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+:root{
+  --green:#27534B;
+  --green-mid:#3B7D71;
+  --accent:#6EC46E;
+  --near-white:#E8EEE7;
+  --bg-light:#F4F5EF;
+  --bg-warm:#EFEFE8;
+  --text-dark:#1a2e1a;
+  --text-body:#2e3d2e;
+  --text-muted:#5a6e5a;
+  --border:#BED4CC;
+  --font-display:'Libre Baskerville',Georgia,serif;
+  --font-mono:'IBM Plex Mono',monospace;
+  --font-body:'Inter',sans-serif;
+  /* Responsive gutter: 40px on narrow, scales to 80px on wide */
+  --gutter:clamp(40px,5.5vw,80px);
+  --page-max:1440px;
+}
+body{font-family:var(--font-body);background:var(--bg-light);color:var(--text-dark);font-size:16px;line-height:1.6;}
+
+/* ─────────────────────────────────────────────────────────
+   ALIGNMENT — FINAL FIX
+   Nav uses position:sticky (NOT fixed). This makes nav width
+   = body width, the same as every section and the footer.
+   All four containers then center within the IDENTICAL
+   containing block (body) using the IDENTICAL rule below.
+   The left edge of the logo, hero text, every section
+   heading, and the footer company name is mathematically
+   the same value at every screen width. No exceptions.
+   ─────────────────────────────────────────────────────── */
+.nav-inner,
+.hero-inner,
+.container,
+.footer-inner{
+  max-width:var(--page-max);
+  margin-left:auto;
+  margin-right:auto;
+  padding-left:var(--gutter);
+  padding-right:var(--gutter);
+}
+
+/* ── NAV — sticky so width equals body (same as all sections) ── */
+nav{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:var(--green);
+}
+.nav-inner{height:72px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-family:var(--font-display);font-size:26px;letter-spacing:0.1em;color:#fff;font-weight:400;text-decoration:none;line-height:1;}
+.nav-menu{display:flex;align-items:center;gap:4px;}
+.nav-item{position:relative;}
+.nav-link{font-family:var(--font-mono);font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#fff;text-decoration:none;padding:9px 16px;border-radius:3px;transition:background 0.15s;display:block;cursor:pointer;background:none;border:none;}
+.nav-link:hover{background:rgba(255,255,255,0.1);}
+.nav-dropdown{display:none;position:absolute;top:calc(100% + 6px);left:0;background:var(--green);border:0.5px solid rgba(255,255,255,0.18);border-radius:4px;min-width:210px;padding:6px 0;box-shadow:0 8px 32px rgba(0,0,0,0.25);}
+.nav-item:hover .nav-dropdown{display:block;}
+.nav-dropdown a{display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.7);text-decoration:none;padding:10px 18px;transition:color 0.1s,background 0.1s;}
+.nav-dropdown a:hover{color:#fff;background:rgba(255,255,255,0.08);}
+.nav-cta{font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;background:var(--accent);color:var(--green);padding:11px 22px;border-radius:3px;text-decoration:none;font-weight:700;margin-left:16px;transition:opacity 0.15s;}
+.nav-cta:hover{opacity:0.88;}
+.chev{display:inline-flex;align-items:center;margin-left:6px;vertical-align:middle;}
+
+/* SHARED */
+/* Nav is now sticky in flow so scroll-margin offsets by nav height */
+section{scroll-margin-top:72px;}
+.section-pad{padding-top:100px;padding-bottom:100px;}
+.section-label{font-family:var(--font-mono);font-size:14px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:48px;display:flex;align-items:center;gap:0;}
+.section-label-light{font-family:var(--font-mono);font-size:14px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:48px;display:flex;align-items:center;gap:0;}
+
+.section-heading{font-family:var(--font-display);font-size:48px;line-height:1.1;color:var(--green);font-weight:400;margin-bottom:40px;text-wrap:balance;}
+.section-heading-light{font-family:var(--font-display);font-size:48px;line-height:1.1;color:#fff;font-weight:400;margin-bottom:40px;text-wrap:balance;}
+.section-sub{font-size:17px;line-height:1.75;color:var(--text-muted);font-weight:300;max-width:600px;margin-bottom:56px;margin-left:auto;margin-right:auto;}
+.section-sub-light{font-size:17px;line-height:1.75;color:rgba(255,255,255,0.65);font-weight:300;max-width:600px;margin-bottom:56px;}
+.pending-badge{display:inline-block;font-family:var(--font-mono);font-size:8px;letter-spacing:0.1em;text-transform:uppercase;background:rgba(110,196,110,0.15);color:rgba(110,196,110,0.9);padding:3px 8px;border-radius:3px;border:0.5px solid rgba(110,196,110,0.3);margin-left:10px;vertical-align:middle;}
+
+/* HERO — nav is in flow now so no nav-height offset needed */
+#hero{padding:100px 0;background:var(--green);position:relative;overflow:hidden;}
+#hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,rgba(255,255,255,0.035) 0,rgba(255,255,255,0.035) 1px,transparent 1px,transparent 14px);}
+.hero-inner{position:relative;z-index:2;}
+.hero-heading{font-family:var(--font-display);font-size:72px;line-height:1.05;color:#fff;font-weight:400;max-width:820px;margin-bottom:48px;text-wrap:balance;}
+.hero-heading .accent{color:var(--green-mid);}
+.hero-sub{font-size:18px;line-height:1.8;color:#fff;font-weight:300;max-width:580px;margin-bottom:64px;text-wrap:balance;}
+.hero-ctas{display:flex;align-items:center;}
+.btn-primary{font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;background:var(--accent);color:var(--green);padding:14px 28px;border-radius:3px;text-decoration:none;font-weight:700;transition:opacity 0.15s;display:inline-flex;align-items:center;gap:6px;}
+.btn-primary:hover{opacity:0.88;}
+.hero-scroll{position:absolute;bottom:40px;left:var(--gutter);font-family:var(--font-mono);font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);}
+
+/* FIRM */
+#firm{background:var(--bg-light);}
+#firm > .container{padding-bottom:360px;}
+
+.firm-placeholder{background:var(--bg-warm);border-radius:4px;border:0.5px solid var(--border);padding:28px 32px;margin-top:24px;max-width:800px;}
+.firm-placeholder p{font-family:var(--font-mono);font-size:9px;letter-spacing:0.1em;color:var(--text-muted);line-height:1.8;}
+
+/* TEAM */
+#team{background:var(--green-mid);}
+#team > .container{padding-top:100px;padding-bottom:260px;}
+#team .section-heading{color:#fff;}
+.team-bio-wrap{display:grid;grid-template-columns:260px 1fr;gap:64px;align-items:flex-start;margin-bottom:56px;}
+.team-photo{width:260px;height:320px;background:rgba(255,255,255,0.1);border-radius:3px;display:flex;align-items:center;justify-content:center;border:0.5px solid rgba(255,255,255,0.18);}
+.team-photo span{font-family:var(--font-display);font-size:44px;color:rgba(255,255,255,0.35);}
+.team-title{font-family:var(--font-mono);font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:28px;}
+.team-bio-text p{font-size:16px;line-height:1.85;color:rgba(255,255,255,0.78);font-weight:300;margin-bottom:20px;}
+.team-bio-text p:last-child{margin-bottom:0;}
+.team-stats-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:0.5px solid rgba(255,255,255,0.18);}
+.team-stats-intro{display:none;}
+.team-stats{display:none;}
+.team-stat-bar-item{padding:28px 0;border-right:0.5px solid rgba(255,255,255,0.18);padding-left:32px;}
+.team-stat-bar-item:last-child{border-right:none;}
+.team-stat-num{font-family:var(--font-display);font-size:44px;color:#fff;font-weight:400;line-height:1;margin-bottom:8px;}
+.team-stat-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.5);}
+
+/* PURPOSE & CORE VALUES */
+#purpose{background:var(--green);}
+#purpose > .container{padding-bottom:260px;}
+#core-values{background:var(--green);}
+
+/* Shared zone header */
+.purpose-zone-header{margin-top:48px;margin-bottom:36px;}
+.values-zone-label{
+  font-family:var(--font-mono);
+  font-size:19px;
+  letter-spacing:0.03em;
+  text-transform:uppercase;
+  color:#fff;
+  display:inline-block;
+  border-bottom:2px solid var(--accent);
+  padding-bottom:10px;
+}
+
+/* Purpose split layout */
+.purpose-split{
+  display:grid;
+  grid-template-columns:1fr 480px;
+  gap:80px;
+  align-items:start;
+}
+.purpose-left{}
+.values-purpose-heading{
+  font-family:var(--font-display);
+  font-size:30px;
+  line-height:1.35;
+  color:#fff;
+  font-weight:400;
+  font-style:italic;
+  max-width:580px;
+  text-wrap:balance;
+  margin-bottom:40px;
+}
+.purpose-body p{
+  font-size:17px;
+  line-height:1.85;
+  color:#fff;
+  font-weight:300;
+  margin-bottom:22px;
+  max-width:540px;
+}
+.purpose-body p:last-child{margin-bottom:0;}
+
+/* Purpose image */
+.purpose-image{
+  background:linear-gradient(160deg,#3a5a3a 0%,var(--green) 40%,#0f1f0f 100%);
+  border-radius:4px;
+  height:520px;
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  align-items:flex-end;
+  padding:28px;
+}
+.purpose-image::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:repeating-linear-gradient(-45deg,rgba(255,255,255,0.015) 0,rgba(255,255,255,0.015) 1px,transparent 1px,transparent 10px);
+}
+.purpose-image::after{
+  content:'';
+  position:absolute;
+  bottom:0;left:0;right:0;
+  height:50%;
+  background:linear-gradient(to top,rgba(15,31,15,0.6),transparent);
+}
+.purpose-image-cap{
+  position:relative;
+  z-index:2;
+  font-family:var(--font-mono);
+  font-size:8px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.45);
+}
+
+/* Core values */
+.values-how-text{
+  font-size:20px;
+  line-height:1.8;
+  color:#fff;
+  font-weight:300;
+  max-width:820px;
+  margin-bottom:56px;
+}
+.values-steps-wrap{position:relative;width:100%;}
+.values-steps-row{
+  display:flex;
+  gap:16px;
+  position:relative;
+}
+.values-steps-row::before{
+  content:'';
+  position:absolute;
+  top:19px;
+  left:calc(12.5% + 2px);
+  right:calc(12.5% + 2px);
+  height:1px;
+  background:rgba(255,255,255,0.2);
+  z-index:0;
+}
+.values-step{
+  flex:1;
+  text-align:center;
+  padding:0;
+}
+.values-step-num{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:var(--accent);
+  margin:0 auto 28px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  z-index:1;
+}
+.values-step-num span{
+  font-family:var(--font-mono);
+  font-size:15px;
+  font-weight:700;
+  color:var(--green);
+  line-height:1;
+}
+.values-step-title{
+  font-family:var(--font-mono);
+  font-size:15px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:#fff;
+  font-weight:700;
+  margin-bottom:18px;
+  line-height:1.45;
+}
+.values-step-body{
+  font-size:16px;
+  line-height:1.8;
+  color:#fff;
+  font-weight:400;
+}
+
+/* SOLUTIONS */
+#solutions{background:var(--bg-warm);}
+.solutions-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:16px;}
+.solution-card{border:0.5px solid var(--border);border-radius:4px;overflow:hidden;display:flex;flex-direction:column;}
+.solution-card-top{background:var(--green);padding:48px 40px;}
+.solution-pre-label{font-family:var(--font-mono);font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#fff;background:transparent;margin-bottom:14px;}
+.solution-name{font-family:var(--font-display);font-size:36px;color:#fff;font-weight:500;margin-bottom:16px;line-height:1.1;letter-spacing:0.02em;text-wrap:balance;}
+.solution-tagline{font-size:15px;color:rgba(255,255,255,0.6);font-weight:300;line-height:1.7;}
+.solution-card-bottom{background:var(--bg-light);padding:36px 40px;flex:1;display:flex;flex-direction:column;}
+.solution-points{list-style:none;flex:1;}
+.solution-points li{font-size:14px;line-height:1.75;color:var(--text-body);font-weight:300;padding:10px 0;border-bottom:0.5px solid var(--border);display:flex;align-items:flex-start;gap:12px;}
+.solution-points li:last-child{border-bottom:none;}
+.solution-points li::before{content:'';width:5px;height:5px;background:var(--green-mid);border-radius:50%;flex-shrink:0;margin-top:8px;}
+.solution-cta{display:inline-flex;align-items:center;gap:6px;margin-top:24px;font-family:var(--font-mono);font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--green);text-decoration:none;transition:color 0.15s;}
+.solution-cta:hover{color:var(--green-mid);}
+
+/* PHILOSOPHY */
+#philosophy{background:var(--bg-light);}
+#philosophy > .container{padding-bottom:360px;}
+.philosophy-split{display:grid;grid-template-columns:1fr 480px;gap:80px;align-items:start;margin-top:16px;}
+.philosophy-lead{border-left:2px solid var(--green-mid);padding-left:28px;margin-bottom:40px;}
+.philosophy-lead p{font-family:var(--font-display);font-size:20px;line-height:1.7;color:var(--green);font-weight:400;}
+.philosophy-body p{font-size:16px;line-height:1.85;color:var(--text-body);font-weight:300;margin-bottom:24px;}
+.philosophy-body p:last-child{margin-bottom:0;}
+.philosophy-photo{background:linear-gradient(160deg,#3a5a3a 0%,var(--green) 40%,#0f1f0f 100%);border-radius:4px;height:520px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:28px;}
+.philosophy-photo::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,rgba(255,255,255,0.015) 0,rgba(255,255,255,0.015) 1px,transparent 1px,transparent 10px);}
+.philosophy-photo::after{content:'';position:absolute;bottom:0;left:0;right:0;height:50%;background:linear-gradient(to top,rgba(15,31,15,0.6),transparent);}
+.photo-cap{position:relative;z-index:2;font-family:var(--font-mono);font-size:8px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.45);}
+
+/* DIFFERENTIATORS */
+#differentiators{background:#F4F5EF;}
+.diff-intro{padding:0 0 32px;text-align:center;}
+.diff-table-wrap{overflow-x:auto;margin:0 auto;display:flex;justify-content:center;}
+.diff-table{width:auto;border-collapse:separate;border-spacing:0;table-layout:fixed;}
+.diff-table thead th{background:#F4F5EF;border:none;padding:10px 20px 14px;text-align:center;font-family:var(--font-body);font-size:13px;font-weight:500;color:var(--text-muted);}
+.diff-table thead th:first-child{text-align:left;}
+.diff-table thead th:nth-child(2),.diff-table thead th:last-child{color:var(--green);font-weight:600;}
+.diff-table thead th:nth-child(2){border-top:1.5px solid var(--green-mid);border-left:1.5px solid var(--green-mid);border-right:1.5px solid var(--green-mid);border-radius:8px 8px 0 0;}
+.diff-table tbody td{padding:9px 20px;font-size:13px;color:var(--text-body);border:none;}
+.diff-table tbody td:first-child{white-space:nowrap;width:1%;}
+.diff-table thead th:first-child{width:1%;white-space:nowrap;}
+.diff-table tbody td:not(:first-child){text-align:center;}
+.diff-table tbody tr:nth-child(odd) td{background:#EFEFE8;}
+.diff-table tbody tr:nth-child(even) td{background:#F4F5EF;}
+.diff-table tbody tr:nth-child(odd):not(.diff-spacer) td:first-child{border-top-left-radius:6px;border-bottom-left-radius:6px;}
+.diff-table tbody tr:nth-child(odd):not(.diff-spacer) td:last-child{border-top-right-radius:6px;border-bottom-right-radius:6px;}
+.diff-table tbody td:nth-child(2){border-left:1.5px solid var(--green-mid);border-right:1.5px solid var(--green-mid);}
+.diff-spacer td{background:#F4F5EF !important;padding:0;height:16px;border-radius:0 !important;}
+.diff-spacer td:nth-child(2){border-left:1.5px solid var(--green-mid);border-right:1.5px solid var(--green-mid);border-bottom:1.5px solid var(--green-mid);border-radius:0 0 8px 8px !important;}
+
+/* CRITERIA */
+#criteria{background:var(--bg-light);}
+.criteria-table{width:100%;border-collapse:collapse;margin-top:8px;}
+.criteria-table td{padding:18px 0;border-bottom:0.5px solid var(--border);font-size:15px;color:var(--text-body);line-height:1.5;}
+.criteria-table td:first-child{font-family:var(--font-mono);font-size:15px;letter-spacing:0.06em;text-transform:uppercase;color:var(--green-mid);width:240px;padding-right:24px;}
+.criteria-table tr:last-child td{border-bottom:none;}
+
+/* JOURNEY */
+#journey{background:var(--green-mid);}
+.journey-steps{display:flex;flex-direction:column;margin-top:8px;}
+.journey-step{display:grid;grid-template-columns:60px 1fr;gap:32px;align-items:stretch;}
+.step-marker{display:flex;flex-direction:column;align-items:center;padding-top:40px;}
+.step-circle{width:40px;height:40px;border-radius:50%;background:var(--accent);box-shadow:0 2px 12px rgba(0,0,0,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:1;}
+.step-num{font-family:var(--font-mono);font-size:15px;color:var(--green);font-weight:700;line-height:1;}
+.step-line{width:1.5px;flex:1;background:rgba(255,255,255,0.2);margin-top:6px;}
+.journey-step:last-child .step-line{display:none;}
+.step-content{padding:40px 0;}
+.step-title{font-family:var(--font-mono);font-size:13px;letter-spacing:0.08em;color:#fff;font-weight:700;margin-bottom:14px;text-transform:uppercase;text-wrap:balance;}
+.step-body{font-size:15px;line-height:1.8;color:rgba(255,255,255,0.72);font-weight:300;}
+
+/* FAQ */
+#faq{background:var(--bg-warm);}
+.faq-list{margin-top:8px;}
+.faq-item{border-bottom:0.5px solid var(--border);cursor:pointer;}
+.faq-item:first-child{border-top:0.5px solid var(--border);}
+.faq-item:last-child{border-bottom:none;}
+.faq-q{font-size:16px;color:var(--green);font-weight:400;padding:22px 0;display:flex;justify-content:space-between;align-items:center;gap:16px;}
+.faq-q::after{content:'+';font-family:var(--font-mono);font-size:16px;color:var(--green-mid);flex-shrink:0;}
+.faq-item.open .faq-q::after{content:'−';}
+.faq-a{display:none;padding:0 0 22px;font-size:15px;line-height:1.8;color:var(--text-body);font-weight:300;max-width:680px;}
+.faq-item.open .faq-a{display:block;}
+
+/* BLOG */
+#blog{background:var(--bg-light);}
+.blog-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:36px;}
+.blog-view-all{font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--green);text-decoration:none;border:1px solid var(--green-mid);padding:11px 20px;border-radius:3px;transition:background 0.15s,color 0.15s;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;}
+.blog-view-all:hover{background:var(--green);color:#fff;}
+.blog-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;}
+.blog-card{background:#fff;border:0.5px solid var(--border);border-radius:4px;overflow:hidden;}
+.blog-card-img{background:var(--green-mid);height:180px;display:flex;align-items:center;justify-content:center;opacity:0.45;}
+.blog-card-img span{font-family:var(--font-mono);font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:#fff;}
+.blog-card-body{padding:28px;}
+.blog-tag{font-family:var(--font-mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);background:rgba(59,125,113,0.1);border:0.5px solid rgba(59,125,113,0.22);border-radius:3px;padding:5px 11px;display:inline-block;margin-bottom:14px;}
+.blog-title{font-family:var(--font-display);font-size:20px;color:var(--green);font-weight:400;margin-bottom:10px;line-height:1.3;text-wrap:balance;}
+.blog-excerpt{font-size:13px;line-height:1.7;color:var(--text-muted);font-weight:300;}
+
+/* CONNECT */
+#connect{background:var(--green);}
+.connect-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+.connect-heading{font-family:var(--font-display);font-size:48px;color:#fff;font-weight:400;line-height:1.15;margin-bottom:28px;text-wrap:balance;}
+.connect-heading .accent{color:var(--near-white);}
+.connect-body{font-size:16px;line-height:1.8;color:#fff;font-weight:300;margin-bottom:16px;}
+.connect-form{display:flex;flex-direction:column;gap:14px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.form-field{display:flex;flex-direction:column;gap:6px;}
+.form-label{font-family:var(--font-mono);font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:#fff;}
+.form-input,.form-select,.form-textarea{background:rgba(255,255,255,0.07);border:0.5px solid rgba(255,255,255,0.18);border-radius:3px;padding:12px 16px;font-family:var(--font-body);font-size:14px;color:#fff;outline:none;transition:border-color 0.15s;width:100%;}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:rgba(255,255,255,0.4);}
+.form-input::placeholder,.form-textarea::placeholder{color:rgba(255,255,255,0.25);}
+.form-select{color:rgba(255,255,255,0.6);appearance:none;}
+.form-select option{background:var(--green);color:#fff;}
+.form-textarea{resize:vertical;min-height:100px;}
+.form-submit{font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;background:var(--accent);color:var(--green);padding:14px 28px;border-radius:3px;border:none;cursor:pointer;font-weight:700;width:100%;margin-top:4px;transition:opacity 0.15s;display:flex;align-items:center;justify-content:center;gap:8px;}
+.form-submit:hover{opacity:0.88;}
+
+/* FOOTER */
+footer{background:#1a2e1a;padding:60px 0 36px;position:relative;}
+.footer-inner{}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:56px;}
+.footer-brand{flex-shrink:0;max-width:240px;}
+.footer-logo{font-family:var(--font-display);font-size:20px;color:#fff;font-weight:400;letter-spacing:0.08em;margin-bottom:10px;}
+.footer-tagline{font-size:13px;color:rgba(255,255,255,0.35);font-weight:300;line-height:1.6;}
+.footer-nav-group{display:flex;gap:52px;}
+.footer-col-head{font-family:var(--font-mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;}
+.footer-links{display:flex;flex-direction:column;gap:10px;}
+.footer-links a{font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none;font-weight:300;transition:color 0.15s;}
+.footer-links a:hover{color:#fff;}
+.footer-bottom{border-top:0.5px solid rgba(255,255,255,0.1);padding-top:28px;display:flex;justify-content:space-between;align-items:center;}
+.footer-legal{font-family:var(--font-mono);font-size:8px;letter-spacing:0.1em;color:rgba(255,255,255,0.25);}
+.footer-legal-links{display:flex;gap:24px;}
+.footer-legal-links a{font-family:var(--font-mono);font-size:8px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.25);text-decoration:none;transition:color 0.15s;}
+.footer-legal-links a:hover{color:rgba(255,255,255,0.5);}
+
+/* FIRM — redesigned */
+.firm-intro{font-size:18px;line-height:1.8;color:var(--text-body);font-weight:300;max-width:680px;margin-bottom:52px;}
+.firm-pillars{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border);border-radius:4px;overflow:hidden;margin-bottom:52px;}
+.firm-pillar{background:var(--bg-warm);padding:36px 32px;}
+.firm-pillar-icon{width:32px;height:32px;margin-bottom:20px;color:var(--green-mid);}
+.firm-pillar-head{font-family:var(--font-display);font-size:20px;color:var(--green);font-weight:400;margin-bottom:12px;line-height:1.2;text-wrap:balance;}
+.firm-pillar-body{font-size:14px;line-height:1.75;color:var(--text-muted);font-weight:300;}
+.firm-copy p{font-size:16px;line-height:1.85;color:var(--text-body);font-weight:300;margin-bottom:24px;max-width:760px;}
+.firm-copy p:last-child{margin-bottom:0;}
+
+/* FAQ footer CTA */
+.faq-footer{margin-top:0;padding-top:44px;border-top:0.5px solid var(--border);display:flex;align-items:center;gap:20px;}
+.faq-footer-text{font-size:15px;color:var(--text-muted);font-weight:300;}
+.faq-footer-cta{font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;background:var(--accent);color:var(--green);padding:11px 20px;border-radius:3px;text-decoration:none;white-space:nowrap;font-weight:700;transition:opacity 0.15s;display:inline-flex;align-items:center;gap:8px;}
+.faq-footer-cta:hover{opacity:0.88;}
+
+
+
+
+
+
+/* ── HERO LINE-HEIGHT FIX ── */
+.hero-heading{line-height:1.15;}
+
+/* ── JOURNEY STEP TITLE SIZE ── */
+.step-title{font-size:17px;letter-spacing:0.06em;}
+
+/* ── FORM LABELS — match or exceed input text size ── */
+.form-label{font-size:13px;letter-spacing:0.1em;color:rgba(255,255,255,0.7);}
+
+/* ── DIFF TABLE CENTERED ── */
+.diff-table-wrap{margin-left:auto;margin-right:auto;}
+
+/* ── SOLUTION NAME → WHITE ── */
+
+/* ── SOLUTION CTA — uppercase, 14px, no underline ── */
+.solution-cta{
+  font-family:var(--font-mono);
+  font-size:14px;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--green);
+  text-decoration:none;
+  border-bottom:none;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-top:24px;
+  transition:color 0.15s;
+}
+.solution-cta:hover{color:var(--green-mid);}
+
+/* ── FULL-SCREEN SECTIONS ── */
+section > .container{width:100%;padding-top:100px;padding-bottom:260px;}
+#hero > .container{padding-bottom:100px;}
+#about-cta > .container{padding-top:112px;padding-bottom:112px;}
+#differentiators > .container{padding-top:100px;padding-bottom:200px;}
+
+/* ── FAQ FOOTER — single line, tight CTA ── */
+
+.faq-footer-text{
+  font-size:15px;
+  color:var(--text-muted);
+  font-weight:300;
+}
+
+
+/* ── FOOTER NAV GROUP — equal column widths so gaps are visually even ── */
+.footer-nav-group{gap:48px;}
+.footer-nav-group > div{min-width:120px;}
+
+/* ── TOPOGRAPHIC TEXTURES ──
+   Each dark section gets a unique SVG data-URI background.
+   All share the contour/survey visual language; they vary
+   in scale, density, and curvature. Opacity stays very low. */
+
+/* Hero uses diagonal ::before only */
+
+/* TEAM — green-mid bg, denser survey grid curves */
+#team{
+  background-color:var(--green-mid);
+}
+
+/* VALUES — darkest green, land survey diagonals, very tight */
+#values{
+  background-color:var(--green);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cg fill='none' stroke='%23336358' stroke-width='0.5' opacity='0.4'%3E%3Cpath d='M-50 600 L250 0'/%3E%3Cpath d='M50 600 L350 0'/%3E%3Cpath d='M150 600 L450 0'/%3E%3Cpath d='M250 600 L550 0'/%3E%3Cpath d='M350 600 L650 0'/%3E%3Cpath d='M450 600 L750 0'/%3E%3Cpath d='M-150 600 L150 0'/%3E%3Cpath d='M600 -50 L0 250'/%3E%3Cpath d='M600 100 L0 400'/%3E%3Cpath d='M600 300 L0 600'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat:repeat;
+  background-size:600px 600px;
+}
+
+/* JOURNEY — green-mid, topographic contour rings, localized */
+#journey{
+  background-color:var(--green-mid);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='700'%3E%3Cg fill='none' stroke='%234a9485' stroke-width='0.7' opacity='0.4'%3E%3Cellipse cx='750' cy='100' rx='320' ry='160'/%3E%3Cellipse cx='750' cy='100' rx='260' ry='125'/%3E%3Cellipse cx='750' cy='100' rx='200' ry='90'/%3E%3Cellipse cx='750' cy='100' rx='140' ry='58'/%3E%3Cellipse cx='150' cy='580' rx='280' ry='140'/%3E%3Cellipse cx='150' cy='580' rx='220' ry='105'/%3E%3Cellipse cx='150' cy='580' rx='160' ry='72'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:cover;
+}
+
+/* CONNECT — darkest, minimal whisper lines only */
+#connect{
+  background-color:var(--green);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1000' height='500'%3E%3Cg fill='none' stroke='%23336358' stroke-width='0.6' opacity='0.35'%3E%3Cpath d='M-200 500 Q250 420 500 450 Q750 480 1200 410'/%3E%3Cpath d='M-200 450 Q200 365 500 395 Q800 425 1200 355'/%3E%3Cpath d='M-200 400 Q150 308 500 340 Q850 370 1200 298'/%3E%3Cpath d='M-200 350 Q100 250 500 285 Q900 315 1200 242'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:center bottom;
+  background-size:cover;
+}
+
+
+
+
+
+.footer-inner{position:relative;z-index:1;}
+
+/* ── ABOUT PAGE HEADER ── */
+.page-header{background:var(--green);padding:124px 0 112px;position:relative;overflow:hidden;}
+.page-header::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,rgba(255,255,255,0.035) 0,rgba(255,255,255,0.035) 1px,transparent 1px,transparent 14px);}
+.page-header .container{position:relative;z-index:2;}
+.page-header-eyebrow{font-family:var(--font-mono);font-size:14px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:28px;}
+.page-header-heading{font-family:var(--font-display);font-size:58px;line-height:1.14;color:#fff;font-weight:400;max-width:860px;margin-bottom:30px;text-wrap:balance;}
+.page-header-sub{font-size:18px;line-height:1.8;color:rgba(255,255,255,0.72);font-weight:300;max-width:620px;}
+
+/* ── ABOUT CTA ── */
+#about-cta{background:var(--bg-warm);text-align:center;}
+.about-cta-inner{max-width:680px;margin-left:auto;margin-right:auto;}
+.about-cta-eyebrow{font-family:var(--font-mono);font-size:14px;letter-spacing:0.2em;text-transform:uppercase;color:var(--green-mid);margin-bottom:24px;}
+.about-cta-heading{font-family:var(--font-display);font-size:46px;line-height:1.15;color:var(--green);font-weight:400;margin-bottom:24px;text-wrap:balance;}
+.about-cta-body{font-size:17px;line-height:1.8;color:var(--text-muted);font-weight:300;max-width:540px;margin:0 auto 40px;}
+.about-cta-btn{font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;background:var(--accent);color:var(--green);padding:16px 32px;border-radius:3px;text-decoration:none;font-weight:700;display:inline-flex;align-items:center;gap:8px;transition:opacity 0.15s;}
+.about-cta-btn:hover{opacity:0.88;}
+
+/* ── PURPOSE ⇄ PHILOSOPHY BACKGROUND SWAP ──
+   Philosophy now sits on dark green; Purpose now on light warm.
+   Text colors are flipped per section (scoped by ID) so contrast holds
+   and so Core Values, which shares classes with Purpose, is untouched. */
+#philosophy{background:var(--green);}
+#philosophy .section-heading{color:#fff;}
+#philosophy .philosophy-lead{border-left-color:var(--accent);}
+#philosophy .philosophy-lead p{color:#fff;}
+#philosophy .philosophy-body p{color:rgba(255,255,255,0.82);}
+#philosophy .philosophy-photo{border:0.5px solid rgba(255,255,255,0.14);}
+
+#purpose{background:var(--bg-warm);position:relative;overflow:hidden;}
+#purpose .container{position:relative;z-index:1;}
+#purpose .section-label-light{color:var(--green-mid);}
+
+/* ghost display type, top-right */
+
+.purpose-statement-block{margin-top:6px;max-width:1040px;}
+.purpose-eyebrow{font-family:var(--font-mono);font-size:19px;letter-spacing:0.03em;text-transform:uppercase;color:var(--green);display:inline-block;border-bottom:2px solid var(--accent);padding-bottom:10px;margin-bottom:30px;}
+#purpose .values-purpose-heading{color:var(--green);font-family:var(--font-display);font-style:normal;font-weight:400;font-size:54px;line-height:1.12;margin:0;max-width:none;text-wrap:initial;}
+#purpose .values-purpose-heading em{font-style:italic;color:var(--accent);}
+
+/* body + placeholder image */
+.purpose-torch{display:grid;grid-template-columns:1.15fr 1fr;gap:72px;margin-top:56px;align-items:center;}
+.purpose-torch-body p{font-size:16px;line-height:1.8;color:var(--text-body);font-weight:300;margin:0 0 20px;}
+.purpose-torch-body p:last-child{margin-bottom:0;}
+.purpose-image-ph{aspect-ratio:4/3;background:rgba(39,83,75,0.06);border:1px solid rgba(39,83,75,0.18);display:flex;align-items:center;justify-content:center;}
+.ph-label{font-family:var(--font-mono);font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(39,83,75,0.45);}
+/* ten years from now band */
+
+/* ── PHILOSOPHY: centered manifesto on textured dark green ── */
+#philosophy{
+  background-color:var(--green);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cg fill='none' stroke='%23336358' stroke-width='0.6' opacity='0.45'%3E%3Cpath d='M-50 600 L250 0'/%3E%3Cpath d='M50 600 L350 0'/%3E%3Cpath d='M150 600 L450 0'/%3E%3Cpath d='M250 600 L550 0'/%3E%3Cpath d='M350 600 L650 0'/%3E%3Cpath d='M450 600 L750 0'/%3E%3Cpath d='M-150 600 L150 0'/%3E%3Cpath d='M600 -50 L0 250'/%3E%3Cpath d='M600 100 L0 400'/%3E%3Cpath d='M600 300 L0 600'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat:repeat;
+  background-size:600px 600px;
+}
+.philosophy-manifesto{max-width:840px;margin:0 auto;text-align:center;position:relative;z-index:1;}
+.approach-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;margin-top:120px;position:relative;z-index:1;}
+.approach-item{min-width:0;}
+.approach-icon{width:34px;height:34px;color:var(--accent);margin-bottom:24px;}
+.approach-icon svg{width:34px;height:34px;display:block;}
+.approach-head{font-family:var(--font-display);font-size:22px;color:#fff;font-weight:400;margin-bottom:14px;line-height:1.25;min-height:2.5em;}
+.approach-body{font-size:17px;line-height:1.9;color:rgba(255,255,255,0.78);font-weight:300;}
+
+/* ── TEAM: operator stat band ── */
+.team-left{display:flex;flex-direction:column;}
+
+#firm .firm-intro{max-width:760px;margin-bottom:48px;}
+#firm .firm-pillars-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border);border-radius:4px;overflow:hidden;}
+#firm .firm-pillar{background:var(--bg-warm);padding:32px 28px;display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:18px;row-gap:0;align-items:start;}
+#firm .firm-pillar-icon{width:30px;height:30px;margin:0;color:var(--green-mid);flex-shrink:0;grid-column:1;grid-row:1;}
+#firm .firm-pillar-icon svg{width:30px;height:30px;display:block;}
+#firm .firm-pillar-text{display:contents;}
+#firm .firm-pillar-head{font-family:var(--font-display);font-size:20px;color:var(--green);font-weight:400;margin-bottom:0;line-height:1.2;grid-column:2;grid-row:1;align-self:center;}
+#firm .firm-pillar-body{font-size:14px;line-height:1.7;color:var(--text-muted);font-weight:300;grid-column:1/3;grid-row:2;padding-top:14px;}
+#team .team-bio-wrap{grid-template-columns:230px 1fr;gap:56px;align-items:start;max-width:1180px;}
+.team-stats-intro{font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin:34px 0 22px;}
+.team-stats{display:grid;grid-template-columns:1fr 1fr;gap:26px 20px;}
+
+.team-stat-num{font-family:var(--font-display);font-size:44px;line-height:1;color:#fff;font-weight:400;margin-bottom:8px;}
+.team-stat-label{font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.72);line-height:1.5;}
+
+/* ── RESPONSIVE (v46 ships no breakpoints; this collapses the multi-column
+      grids that otherwise overflow narrow screens. Scoped to About-page
+      sections by ID so the Differentiators section is left untouched.) ── */
+@media (max-width:768px){
+  .nav-inner{height:auto;flex-wrap:wrap;gap:8px;padding-top:12px;padding-bottom:12px;}
+  .nav-logo{font-size:20px;}
+  .nav-menu{flex-wrap:wrap;gap:2px;justify-content:flex-start;}
+  .nav-link{padding:7px 10px;font-size:11px;}
+  .nav-cta{margin-left:0;padding:9px 14px;}
+
+  .page-header,#firm,#team,#philosophy,#purpose,#core-values,
+  .page-header{padding:72px 0 60px;}
+  .page-header-heading{font-size:38px;}
+  .page-header-sub{font-size:16px;}
+
+  #firm,#team,#philosophy,#purpose,#core-values{padding-top:64px;padding-bottom:64px;}
+
+  #firm .section-heading{font-size:34px;}
+  #firm .firm-pillars-row{grid-template-columns:1fr;}
+  #firm .firm-intro{font-size:15px;}
+
+  #team .section-heading{font-size:34px;}
+  #team .team-bio-wrap{grid-template-columns:1fr;gap:28px;}
+  .team-photo{width:140px;height:170px;}
+  .team-stats{grid-template-columns:repeat(2,1fr);gap:26px 32px;}
+  .team-stat-num{font-size:34px;}
+  .team-stat-label{font-size:10px;}
+
+  .philosophy-statement{font-size:30px;}
+  .philosophy-note{font-size:17px;}
+  #philosophy .section-heading-light{font-size:30px;}
+  .approach-grid{grid-template-columns:1fr;gap:36px;}
+  .approach-head{min-height:0;}
+
+  #purpose .values-purpose-heading{font-size:32px;}
+  #purpose .values-purpose-heading .hb{display:none;}
+  .purpose-torch{grid-template-columns:1fr;gap:36px;}
+
+  .values-steps-row{flex-direction:column;gap:36px;}
+  .values-steps-row::before{display:none;}
+  .values-how-text{font-size:17px;}
+
+  .about-cta{padding:72px 0;}
+  .about-cta-heading{font-size:32px;}
+
+  .footer-top{flex-direction:column;gap:32px;}
+  .footer-nav-group{flex-wrap:wrap;gap:28px;}
+  .footer-bottom{flex-direction:column;gap:14px;align-items:flex-start;}
+}
+
+
+/* ── SHARED NAV ── */
+nav{position:sticky;top:0;z-index:100;background:var(--green);}
+.nav-inner,.container,.footer-inner{max-width:var(--page-max);margin-left:auto;margin-right:auto;padding-left:var(--gutter);padding-right:var(--gutter);}
+.nav-inner{height:72px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-family:var(--font-display);font-size:26px;letter-spacing:0.1em;color:#fff;font-weight:400;text-decoration:none;line-height:1;}
+.nav-menu{display:flex;align-items:center;gap:4px;}
+.nav-item{position:relative;}
+.nav-link{font-family:var(--font-mono);font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#fff;text-decoration:none;padding:9px 16px;border-radius:3px;transition:background 0.15s;display:block;cursor:pointer;background:none;border:none;}
+.nav-link:hover,.nav-link.active{background:rgba(255,255,255,0.1);}
+.nav-dropdown{display:none;position:absolute;top:calc(100% + 6px);left:0;background:var(--green);border:0.5px solid rgba(255,255,255,0.18);border-radius:4px;min-width:210px;padding:6px 0;box-shadow:0 8px 32px rgba(0,0,0,0.25);}
+.nav-dropdown::before{content:"";position:absolute;bottom:100%;left:0;width:100%;height:6px;}
+.nav-item:hover .nav-dropdown{display:block;}
+.nav-dropdown a{display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.7);text-decoration:none;padding:10px 18px;transition:color 0.1s,background 0.1s;}
+.nav-dropdown a:hover{color:#fff;background:rgba(255,255,255,0.08);}
+.nav-cta{font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;background:var(--accent);color:var(--green);padding:11px 22px;border-radius:3px;text-decoration:none;font-weight:700;margin-left:16px;transition:opacity 0.15s;}
+.nav-cta:hover{opacity:0.88;}
+.chev{display:inline-flex;align-items:center;margin-left:6px;vertical-align:middle;}
+/* ── SHARED FOOTER ── */
+footer{background:#1a2e1a;padding:60px 0 36px;position:relative;}
+footer::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(-45deg,rgba(255,255,255,0.018) 0,rgba(255,255,255,0.018) 1px,transparent 1px,transparent 12px);pointer-events:none;}
+.footer-inner{position:relative;z-index:1;}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:56px;}
+.footer-brand{flex-shrink:0;max-width:240px;}
+.footer-logo-link{font-family:var(--font-display);font-size:20px;color:#fff;font-weight:400;letter-spacing:0.08em;text-decoration:none;display:block;margin-bottom:10px;transition:opacity 0.15s;}
+.footer-logo-link:hover{opacity:0.85;}
+.footer-tagline{font-size:13px;color:rgba(255,255,255,0.35);font-weight:300;line-height:1.6;}
+.footer-nav-group{display:flex;gap:48px;}
+.footer-nav-group > div{min-width:120px;}
+.footer-col-head{font-family:var(--font-mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;}
+.footer-links{display:flex;flex-direction:column;gap:10px;}
+.footer-links a{font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none;font-weight:300;transition:color 0.15s;}
+.footer-links a:hover{color:#fff;}
+.footer-bottom{border-top:0.5px solid rgba(255,255,255,0.1);padding-top:28px;display:flex;justify-content:space-between;align-items:center;}
+.footer-legal{font-family:var(--font-mono);font-size:8px;letter-spacing:0.1em;color:rgba(255,255,255,0.25);}
+.footer-legal-links{display:flex;gap:24px;}
+.footer-legal-links a{font-family:var(--font-mono);font-size:8px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.25);text-decoration:none;transition:color 0.15s;}
+.footer-legal-links a:hover{color:rgba(255,255,255,0.5);}
+</style>
+
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/bold/style.css"/>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Southland Equity</a>
+    <div class="nav-menu">
+      <div class="nav-item">
+        <a href="about.html" class="nav-link active">About</a>
+        <div class="nav-dropdown">
+          <a href="about.html#firm">The Firm</a>
+          <a href="about.html#team">Team</a>
+          <a href="about.html#differentiators">Differentiators</a>
+          <a href="about.html#philosophy">Philosophy</a>
+          <a href="about.html#purpose">Our Purpose</a>
+          <a href="about.html#core-values">Core Values</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="owners.html" class="nav-link">Owners</a>
+        <div class="nav-dropdown">
+          <a href="owners.html#criteria">Investment Criteria</a>
+          <a href="owners.html#solutions">Solutions</a>
+          <a href="owners.html#value-creation">How We Create Value</a>
+          <a href="owners.html#journey">The Journey</a>
+          <a href="owners.html#faq">FAQ</a>
+        </div>
+      </div>
+      <a href="blog.html" class="nav-link">Blog</a>
+      <a href="connect.html" class="nav-link">Connect</a>
+      <a href="connect.html" class="nav-cta">Start a Conversation</a>
+    </div>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="container">
+    <div class="page-header-eyebrow">About Southland Equity</div>
+    <h1 class="page-header-heading">You should know exactly who you're selling to.</h1>
+    <p class="page-header-sub">We are a Georgia holding company that buys founder and family-owned businesses with plans to keep them for the long run. What follows is who we are, what we believe, and how we will treat what you spent decades building.</p>
+  </div>
+</header>
+
+<!-- FIRM -->
+<section id="firm">
+  <div class="container">
+    <div class="section-label">Firm</div>
+    <h2 class="section-heading">Who We Are</h2>
+    <p class="firm-intro">Most groups acquiring businesses today are already planning their exit. They want to hold a company for a few years, dress it up, and quickly sell it again. Southland Equity is built differently. We buy local businesses to keep them permanently, and that long-term commitment changes how we treat everything we buy&mdash;and everyone who built it.</p>
+    <div class="firm-pillars-row">
+        <div class="firm-pillar">
+          <div class="firm-pillar-icon">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16C4 9.373 9.373 4 16 4s12 5.373 12 12-5.373 12-12 12S4 22.627 4 16z"/><path d="M16 10v6l4 2"/></svg>
+          </div>
+          <div class="firm-pillar-text">
+            <div class="firm-pillar-head">Permanent Capital</div>
+            <div class="firm-pillar-body">Unlike private equity funds on a seven-year clock or search funds building toward a quick flip, we have no exit mandates. Because we buy to keep, your legacy is protected and your company has a stable home for the long haul&mdash;not a countdown to a resale.</div>
+          </div>
+        </div>
+        <div class="firm-pillar">
+          <div class="firm-pillar-icon">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="16" cy="9" rx="9" ry="4"/><path d="M7 9v6c0 2.2 4 4 9 4s9-1.8 9-4V9"/><path d="M7 15v6c0 2.2 4 4 9 4s9-1.8 9-4v-6"/></svg>
+          </div>
+          <div class="firm-pillar-text">
+            <div class="firm-pillar-head">Skin in the Game</div>
+            <div class="firm-pillar-body">We invest our own capital, meaning we answer to no outside investors and no fund will quietly pass your company to the next buyer. When it is our own money and reputation on the line, standing behind every promise we make is the only option.</div>
+          </div>
+        </div>
+        <div class="firm-pillar">
+          <div class="firm-pillar-icon">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="10" r="5"/><path d="M6 28c0-5.523 4.477-10 10-10s10 4.477 10 10"/></svg>
+          </div>
+          <div class="firm-pillar-text">
+            <div class="firm-pillar-head">One Decision-Maker</div>
+            <div class="firm-pillar-body">We have no investment committees or outside partners to override a handshake. Cameron reviews the business, makes the offer, and carries it through to close&mdash;so when we sign an LOI, the answers you get are final, and they come fast.</div>
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="container">
+    <div class="section-label-light">Team</div>
+    <h2 class="section-heading">Cameron Baird</h2>
+    <div class="team-bio-wrap">
+      <div class="team-left">
+        <div class="team-photo"><span>CB</span></div>
+      </div>
+      <div class="team-bio-text" style="padding-left:32px;">
+        <div class="team-title">Founder, Southland Equity</div>
+        <p>Cameron did not learn how to scale a business in a classroom. He started CargoBarn, a freight brokerage, with $6,600 and not a single customer, then bootstrapped it with no outside capital into a company that ranked 65th on the Inc. 500 list of the fastest-growing companies in America and reached $92 million in annual revenue, before selling it in 2024. Building it from nothing was hard. Deciding to sell it was harder.</p>
+        <p>Out of that experience, Southland was born. He knows what it feels like to hand years of work over to someone else, and how much rides on choosing that next steward well. He is convinced that the best buyer for the majority of founder-owned businesses isn’t some financial conglomerate with rooms full of MBAs—it’s someone who has actually sat in the founder’s chair. Someone who knows a sale is about far more than the number on a check, and who will treat your legacy, your people, and your customers with the gravity they deserve.</p>
+      </div>
+    </div>
+    <div class="team-stats-bar">
+      <div class="team-stat-bar-item"><div class="team-stat-num">20+</div><div class="team-stat-label">Years Building &amp; Operating</div></div>
+      <div class="team-stat-bar-item"><div class="team-stat-num">$92M</div><div class="team-stat-label">Annual Revenue at Exit</div></div>
+      <div class="team-stat-bar-item"><div class="team-stat-num">100+</div><div class="team-stat-label">Team at Its Peak</div></div>
+      <div class="team-stat-bar-item"><div class="team-stat-num">No. 65</div><div class="team-stat-label">Inc. 500, 2012</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFFERENTIATORS -->
+<section id="differentiators">
+  <div class="container">
+    <div class="diff-intro">
+      <div class="section-label">Differentiators</div>
+      <h2 class="section-heading" style="font-size:36px;">How We're Different</h2>
+      <p class="section-sub" style="margin-bottom:0;">Not every buyer is built the same. Here is what it looks like when you choose to sell to us.</p>
+    </div>
+    <div class="diff-table-wrap">
+      <table class="diff-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th style="width:160px;white-space:nowrap;">Southland Equity</th>
+            <th style="width:160px;">Private Equity /<br>Financial Buyer</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Georgia-based</td><td><svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="14" r="14" fill="#27534B"/><path d="M8.5 14l4 4 7-8" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></td><td><svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="14" r="14" fill="#E0B341"/><path d="M10.4 10.8C10.4 8.7 12 7.4 14 7.4C16 7.4 17.5 8.6 17.5 10.4C17.5 12.3 15.7 12.8 14.7 13.9C14.2 14.5 14 15 14 15.8" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="14" cy="19.6" r="1.5" fill="#fff"/></svg></td></tr>
+          <tr><td>Entrepreneur-led</td><td><svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="14" r="14" fill="#27534B"/><path d="M8.5 14l4 4 7-8" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></td><td><svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="14" r="14" fill="#E0B341"/><path d="M10.4 10.8C10.4 8.7 12 7.4 14 7.4C16 7.4 17.5 8.6 17.5 10.4C17.5 12.3 15.7 12.8 14.7 13.9C14.2 14.5 14 15 14 15.8" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="14" cy="19.6" r="1.5" fill="#fff"/></svg></td></tr>
+          <tr><td>Flexible terms and timing</td><td><svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="14" r="14" fill="#27534B"/><path d="M8.5 14l4 4 7-8" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></td><td><svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="14" r="14" fill="#E0B341"/><path d="M10.4 10.8C10.4 8.7 12 7.4 14 7.4C16 7.4 17.5 8.6 17.5 10.4C17.5 12.3 15.7 12.8 14.7 13.9C14.2 14.5 14 15 14 15.8" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="14" cy="19.6" r="1.5" fill="#fff"/></svg></td></tr>
+          <tr><td>Confidential process</td><td><svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="14" r="14" fill="#27534B"/><path d="M8.5 14l4 4 7-8" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></td><td><svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="14" r="14" fill="#E0B341"/><path d="M10.4 10.8C10.4 8.7 12 7.4 14 7.4C16 7.4 17.5 8.6 17.5 10.4C17.5 12.3 15.7 12.8 14.7 13.9C14.2 14.5 14 15 14 15.8" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="14" cy="19.6" r="1.5" fill="#fff"/></svg></td></tr>
+          <tr><td>Your legacy preserved</td><td><svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="14" r="14" fill="#27534B"/><path d="M8.5 14l4 4 7-8" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></td><td><svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="14" r="14" fill="#E0785F"/><path d="M9.5 9.5l9 9M18.5 9.5l-9 9" stroke="#fff" stroke-width="2.5" stroke-linecap="round" fill="none"/></svg></td></tr>
+          <tr><td>People focused</td><td><svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="14" r="14" fill="#27534B"/><path d="M8.5 14l4 4 7-8" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></td><td><svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="14" r="14" fill="#E0785F"/><path d="M9.5 9.5l9 9M18.5 9.5l-9 9" stroke="#fff" stroke-width="2.5" stroke-linecap="round" fill="none"/></svg></td></tr>
+          <tr><td>Long-term hold preference</td><td><svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="14" r="14" fill="#27534B"/><path d="M8.5 14l4 4 7-8" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></td><td><svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="14" r="14" fill="#E0785F"/><path d="M9.5 9.5l9 9M18.5 9.5l-9 9" stroke="#fff" stroke-width="2.5" stroke-linecap="round" fill="none"/></svg></td></tr>
+          <tr><td>End to end guidance</td><td><svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="14" r="14" fill="#27534B"/><path d="M8.5 14l4 4 7-8" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></td><td><svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="14" r="14" fill="#E0785F"/><path d="M9.5 9.5l9 9M18.5 9.5l-9 9" stroke="#fff" stroke-width="2.5" stroke-linecap="round" fill="none"/></svg></td></tr>
+          <tr class="diff-spacer"><td></td><td></td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section id="philosophy">
+  <div class="container">
+    <div class="section-label">Philosophy</div>
+    <h2 class="section-heading-light">How we grow what you built.</h2>
+    <div class="approach-grid">
+      <div class="approach-item">
+        <div class="approach-icon">
+          <svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 4l13 6.5-13 6.5-13-6.5 13-6.5z"/><path d="M4 17l13 6.5 13-6.5"/><path d="M4 23.5l13 6.5 13-6.5"/></svg>
+        </div>
+        <div class="approach-head">Build On<br>What Works</div>
+        <div class="approach-body">The people, the processes, and the relationships that built this business exist for a reason. We grow by strengthening that foundation, not by tearing it down. Our goal is to protect what is working, support the team in place, and build carefully on top of your success.</div>
+      </div>
+      <div class="approach-item">
+        <div class="approach-icon">
+          <svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 28V22"/><path d="M13 28V17"/><path d="M20 28V12"/><path d="M27 28V6"/></svg>
+        </div>
+        <div class="approach-head">Small Wins,<br>Compounded</div>
+        <div class="approach-body">We do not grow a business with one big swing. We grow it the way it was built—by making a steady stack of small, good decisions every day. Over the years we plan to be here, those daily improvements compound into something truly resilient and lasting.</div>
+      </div>
+      <div class="approach-item">
+        <div class="approach-icon">
+          <svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="17" cy="10" r="5"/><path d="M6 30c0-6.1 4.9-11 11-11s11 4.9 11 11"/></svg>
+        </div>
+        <div class="approach-head">Run by<br>Operators</div>
+        <div class="approach-body">We don't manage from a distance or install layers between us and the people doing the work. The team that built the business day to day is the team we invest in. Our job is to give them better tools and room to keep doing what they were already doing well.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PURPOSE -->
+<section id="purpose">
+  <div class="container">
+    <div class="section-label-light">Our Purpose</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-top:60px;">
+      <div>
+        <h2 class="values-purpose-heading">To give local businesses and their teams a <em>future</em> <em>worthy</em> of their <em>past</em>.</h2>
+        <div class="purpose-torch-body" style="margin-top:32px;">
+          <p>A local business isn’t built on a spreadsheet. It is built with decades of early mornings, late nights, and the collective grit of a team that trusted a vision. It is a lifetime of skin in the game.</p>
+          <p>Taking over that legacy is a weight we don’t carry lightly. Our job isn’t to walk in, change the locks, and treat the employees like line items. Our job is to protect what was built and give it the runway to climb higher.</p>
+          <p>Ten years from now, we want every founder who has sold to us to look back at that company and feel just as proud — if not prouder — of what it has become as they did on the day they passed it on.</p>
+        </div>
+      </div>
+      <div style="background:rgba(39,83,75,0.06);border:1px solid rgba(39,83,75,0.18);display:flex;align-items:center;justify-content:center;min-height:480px;">
+        <span style="font-family:var(--font-mono);font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(39,83,75,0.35);">Photo Placeholder</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CORE VALUES -->
+<section id="core-values">
+  <div class="container">
+    <div class="section-label-light">Core Values</div>
+    <h2 class="section-heading-light">How we operate.</h2>
+    <p class="values-how-text">Every decision we make runs through the same four filters. These principles define how we operate, how we treat the businesses we acquire, and what kind of owners we are to the people inside them.</p>
+    <div class="values-steps-wrap">
+      <div class="values-steps-row">
+        <div class="values-step">
+          <div class="values-step-num"><span>1</span></div>
+          <div class="values-step-title">Actions Over Words</div>
+          <div class="values-step-body">Every offer we put in writing, every number we stand behind at the closing table, every commitment we make to the people inside the businesses we own — we hold ourselves to it without exception. No surprises. No excuses. Find a way to get it done.</div>
+        </div>
+        <div class="values-step">
+          <div class="values-step-num"><span>2</span></div>
+          <div class="values-step-title">Press Forward</div>
+          <div class="values-step-body">The best outcomes rarely come from the easy path. We face hard problems head-on, have the difficult conversations others avoid, and do what needs to be done even when it is uncomfortable. Staying in it when others step back is how we raise the standard for what is possible.</div>
+        </div>
+        <div class="values-step">
+          <div class="values-step-num"><span>3</span></div>
+          <div class="values-step-title">People Over Profits</div>
+          <div class="values-step-body">We put people, honesty, and fairness above the financial outcome — every time, without exception. The employees, the customers, and the sellers who handed us something they spent decades building all come before the return. That is not a trade-off. It is a standard.</div>
+        </div>
+        <div class="values-step">
+          <div class="values-step-num"><span>4</span></div>
+          <div class="values-step-title">We Come to Learn</div>
+          <div class="values-step-body">Every business we acquire was already working before we arrived&mdash;built and run by teams who figured it out long ago. We walk in knowing that. Our job is not to fix what isn't broken, but to earn the trust of the people doing the work, stay out of their way when we should, and never mistake our ownership for the reason things run well.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT CTA -->
+<section id="about-cta">
+  <div class="container">
+    <div class="about-cta-inner">
+      <div class="about-cta-eyebrow">Your Decision</div>
+      <h2 class="about-cta-heading">Now you know who you'd be trusting your business to.</h2>
+      <p class="about-cta-body">You have spent years building something worth protecting. If what you have read here reflects the kind of owner you have been looking for, the next step is a single conversation &mdash; private, no paperwork, and no obligation on either side.</p>
+      <a href="connect.html" class="about-cta-btn">Start a Confidential Conversation <span class="chev"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 2l5 5-5 5" stroke="#27534B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo-link">Southland Equity</a>
+        <div class="footer-tagline">Acquiring and growing exceptional businesses across Georgia.</div>
+      </div>
+      <div class="footer-nav-group">
+        <div>
+          <div class="footer-col-head">About</div>
+          <div class="footer-links">
+            <a href="about.html#firm">The Firm</a>
+            <a href="about.html#team">Team</a>
+            <a href="about.html#differentiators">Differentiators</a>
+            <a href="about.html#philosophy">Philosophy</a>
+            <a href="about.html#purpose">Our Purpose</a>
+            <a href="about.html#core-values">Core Values</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-head">Owners</div>
+          <div class="footer-links">
+            <a href="owners.html#criteria">Investment Criteria</a>
+            <a href="owners.html#solutions">Solutions</a>
+            <a href="owners.html#value-creation">How We Create Value</a>
+            <a href="owners.html#journey">The Journey</a>
+            <a href="owners.html#faq">FAQ</a>
+            <a href="connect.html">Start a Conversation</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-head">Blog</div>
+          <div class="footer-links">
+            <a href="blog.html">All Posts</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-legal">&copy; 2025 Southland Equity. All rights reserved.</div>
+      <div class="footer-legal-links">
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
