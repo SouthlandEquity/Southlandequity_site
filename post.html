@@ -39,7 +39,7 @@
 
     /* POST */
     .post-wrap { max-width: 1000px; margin: 0 auto; padding: 80px var(--gutter); }
-    .post-back { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green-mid); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 48px; transition: color 0.15s; }
+    .post-back { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green-mid); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 0; transition: color 0.15s; }
     .post-back:hover { color: var(--green); }
     .post-tag { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); background: rgba(59,125,113,0.1); border: 0.5px solid rgba(59,125,113,0.22); border-radius: 3px; padding: 5px 11px; display: inline-block; margin-bottom: 20px; }
     .post-title { font-family: var(--font-display); font-size: 44px; line-height: 1.15; color: var(--green); font-weight: 400; margin-bottom: 20px; }
@@ -150,7 +150,7 @@
       document.title = (m.title || 'Blog Post') + ' | Southland Equity';
       document.getElementById('postContent').innerHTML =
         '<a href="blog.html" class="post-back"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Back to Blog</a>'
-        + (m.category ? '<div class="post-tag">' + m.category + '</div>' : '')
+        + (m.category ? '<div class="post-tag" style="display:block;margin-top:32px;">' + m.category + '</div>' : '<div style="margin-top:32px;"></div>')
         + '<h1 class="post-title">' + (m.title||'') + '</h1>'
         + '<div class="post-date">' + formatDate(m.date) + '</div>'
         + imgHtml
