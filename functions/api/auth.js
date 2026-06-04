@@ -10,7 +10,7 @@ export async function onRequestGet(context) {
     const params = new URLSearchParams({
       client_id: GITHUB_CLIENT_ID,
       scope: 'repo,user',
-          redirect_uri: `https://southlandequity.com/api/auth`,
+      redirect_uri: `https://southlandequity-site.pages.dev/api/auth`,
     });
     return Response.redirect(
       `https://github.com/login/oauth/authorize?${params}`,

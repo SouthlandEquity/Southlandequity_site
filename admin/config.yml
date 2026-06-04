@@ -2,10 +2,12 @@ backend:
   name: github
   repo: SouthlandEquity/Southlandequity_site
   branch: main
-  base_url: https://southlandequity.com
+  base_url: https://southlandequity-site.pages.dev
   auth_endpoint: api/auth
+
 media_folder: assets/images
 public_folder: assets/images
+
 collections:
   - name: blog
     label: Blog Posts
@@ -19,11 +21,14 @@ collections:
         name: category
         widget: select
         options:
-          - Selling Your Business
+          - Before You Sell
           - Deal Process
+          - Valuation
+          - Choosing a Buyer
           - Succession
-          - Value Creation
-          - From the Desk of Cameron
+          - Your Legacy
+          - After the Sale
+          - How We Think
       - { label: Excerpt, name: excerpt, widget: text, hint: "Short summary shown on the blog listing page." }
       - label: Featured Image
         name: image
