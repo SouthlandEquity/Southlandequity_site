@@ -883,19 +883,110 @@ footer::before{content:'';position:absolute;inset:0;background:repeating-linear-
 
 <section style="background:var(--bg-light);padding:80px 0;">
   <div class="container">
-    <div class="blog-filter-bar">
-      <button class="blog-filter-btn active">All Posts</button>
-      <button class="blog-filter-btn">Deal Process</button>
-      <button class="blog-filter-btn">Your Legacy</button>
+    <div class="blog-filter-bar" id="filterBar">
+      <button class="blog-filter-btn active" data-filter="all">All Posts</button>
+      <button class="blog-filter-btn" data-filter="Selling Your Business">Selling Your Business</button>
+      <button class="blog-filter-btn" data-filter="Deal Process">Deal Process</button>
+      <button class="blog-filter-btn" data-filter="Succession">Succession</button>
+      <button class="blog-filter-btn" data-filter="Value Creation">Value Creation</button>
+      <button class="blog-filter-btn" data-filter="From the Desk of Cameron">From the Desk of Cameron</button>
     </div>
-    <div class="blog-page-grid"><a href="#" class="blog-card">
-  <div class="blog-card-img"><img src="assets/images/jakub-zerdzicki-LNnmSumlwO4-unsplash.jpg" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
-  <div class="blog-card-body">
-    <span class="blog-tag">Deal Process</span>
-    <div class="blog-title">What Is Working Capital and Why Does It Matter at Close?</div>
-    <div class="blog-excerpt">Most sellers are surprised by working capital adjustments at closing. Here is what it means, why it is standard, and how to think about it before you sign an LOI.</div>
-    <div class="blog-read-more">Read more <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d='M4.5 2l4.5 4.5-4.5 4.5' stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <div class="blog-page-grid" id="blogGrid">
+      <div class="blog-loading" style="grid-column:1/-1;text-align:center;padding:60px 0;font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);">Loading posts...</div>
+    </div>
   </div>
+
+<script>
+(function(){
+  var REPO = 'SouthlandEquity/Southlandequity_site';
+  var BRANCH = 'main';
+  var API = 'https://api.github.com/repos/' + REPO + '/contents/_posts?ref=' + BRANCH;
+  var RAW = 'https://raw.githubusercontent.com/' + REPO + '/' + BRANCH + '/_posts/';
+  var grid = document.getElementById('blogGrid');
+  var filterBar = document.getElementById('filterBar');
+  var allPosts = [];
+  var activeFilter = 'all';
+
+  function parseFrontmatter(text) {
+    var fm = {};
+    var match = text.match(/^---\n([\s\S]*?)\n---/);
+    if (!match) return { meta: fm, body: text };
+    var lines = match[1].split('\n');
+    lines.forEach(function(line) {
+      var kv = line.match(/^(\w+):\s*(.+)$/);
+      if (kv) fm[kv[1].trim()] = kv[2].trim().replace(/^["']|["']$/g,'');
+    });
+    var body = text.slice(match[0].length).trim();
+    return { meta: fm, body: body };
+  }
+
+  function renderCard(post) {
+    var img = post.image
+      ? '<img src="' + post.image + '" alt="" style="width:100%;height:100%;object-fit:cover;">'
+      : '<img src="assets/images/jakub-zerdzicki-LNnmSumlwO4-unsplash.jpg" alt="" style="width:100%;height:100%;object-fit:cover;">';
+    return '<a href="post.html?slug=' + post.slug + '" class="blog-card" data-category="' + (post.category||'') + '">'
+      + '<div class="blog-card-img">' + img + '</div>'
+      + '<div class="blog-card-body">'
+      + '<span class="blog-tag">' + (post.category||'') + '</span>'
+      + '<div class="blog-title">' + post.title + '</div>'
+      + '<div class="blog-excerpt">' + (post.excerpt||'') + '</div>'
+      + '<div class="blog-read-more">Read more <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M4.5 2l4.5 4.5-4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>'
+      + '</div></a>';
+  }
+
+  function renderGrid(filter) {
+    var filtered = filter === 'all' ? allPosts : allPosts.filter(function(p){ return p.category === filter; });
+    if (filtered.length === 0) {
+      grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 0;font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);">No posts yet.</div>';
+    } else {
+      grid.innerHTML = filtered.map(renderCard).join('');
+    }
+  }
+
+  // Filter buttons
+  filterBar.addEventListener('click', function(e) {
+    var btn = e.target.closest('.blog-filter-btn');
+    if (!btn) return;
+    filterBar.querySelectorAll('.blog-filter-btn').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    activeFilter = btn.dataset.filter;
+    renderGrid(activeFilter);
+  });
+
+  // Load posts from GitHub
+  fetch(API)
+    .then(function(r){ return r.json(); })
+    .then(function(files) {
+      if (!Array.isArray(files) || files.length === 0) {
+        grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 0;font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);">No posts yet.</div>';
+        return;
+      }
+      var mdFiles = files.filter(function(f){ return f.name.endsWith('.md'); })
+                         .sort(function(a,b){ return b.name.localeCompare(a.name); });
+      var promises = mdFiles.map(function(f){
+        return fetch(RAW + f.name)
+          .then(function(r){ return r.text(); })
+          .then(function(text){
+            var parsed = parseFrontmatter(text);
+            return Object.assign({}, parsed.meta, {
+              slug: f.name.replace(/\.md$/, ''),
+              body: parsed.body
+            });
+          });
+      });
+      return Promise.all(promises);
+    })
+    .then(function(posts) {
+      if (!posts) return;
+      allPosts = posts;
+      renderGrid(activeFilter);
+    })
+    .catch(function(err){
+      console.error('Blog load error:', err);
+      grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 0;font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);">Could not load posts.</div>';
+    });
+})();
+</script>
 </a><a href="#" class="blog-card">
   <div class="blog-card-img"><img src="assets/images/alexander-grey-8lnbXtxFGZw-unsplash.jpg" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
   <div class="blog-card-body">

@@ -1,0 +1,34 @@
+backend:
+  name: github
+  repo: SouthlandEquity/Southlandequity_site
+  branch: main
+  base_url: https://southlandequity-site.pages.dev
+  auth_endpoint: api/auth
+
+media_folder: assets/images
+public_folder: assets/images
+
+collections:
+  - name: blog
+    label: Blog Posts
+    folder: _posts
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Publish Date, name: date, widget: datetime, format: YYYY-MM-DD }
+      - label: Category
+        name: category
+        widget: select
+        options:
+          - Selling Your Business
+          - Deal Process
+          - Succession
+          - Value Creation
+          - From the Desk of Cameron
+      - { label: Excerpt, name: excerpt, widget: text, hint: "Short summary shown on the blog listing page." }
+      - label: Featured Image
+        name: image
+        widget: image
+        required: false
+      - { label: Body, name: body, widget: markdown }
