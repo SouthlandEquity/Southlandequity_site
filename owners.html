@@ -324,21 +324,21 @@ footer::before{content:'';position:absolute;inset:0;background:repeating-linear-
 
 @media (min-width: 1024px) and (max-width: 1279px) {
   :root { --gutter: clamp(32px, 3.5vw, 56px); --page-max: 1100px; }
-  .nav-inner { height: 68px; }
-  .nav-logo { font-size: 22px; }
-  .nav-link { font-size: 12px; padding: 8px 12px; }
-  .nav-cta { font-size: 11px; padding: 10px 16px; margin-left: 10px; }
-  .hero-heading { font-size: 58px; }
-  .section-heading, .section-heading-light { font-size: 42px; }
-  .page-hero-heading { font-size: 48px; }
-  .page-header-heading { font-size: 48px; }
-  .connect-heading { font-size: 40px; }
-  .about-cta-heading { font-size: 40px; }
-  #purpose .values-purpose-heading { font-size: 44px; }
+  .nav-inner { height: 64px; }
+  .nav-logo { font-size: 20px; }
+  .nav-link { font-size: 11px; padding: 7px 11px; }
+  .nav-cta { font-size: 10px; padding: 9px 14px; margin-left: 10px; }
+  .hero-heading { font-size: 44px; line-height: 1.15; max-width: 620px; margin-bottom: 24px; }
+  .section-heading, .section-heading-light { font-size: 34px; }
+  .page-hero-heading { font-size: 38px; }
+  .page-header-heading { font-size: 38px; }
+  .connect-heading { font-size: 32px; }
+  .about-cta-heading { font-size: 32px; }
+  #purpose .values-purpose-heading { font-size: 36px; }
   .hero-sub { font-size: 17px; max-width: 580px; }
-  .intro-text p { font-size: 18px; }
-  .firm-intro { font-size: 17px; }
-  .section-sub, .section-sub-light { font-size: 16px; }
+  .intro-text p { font-size: 16px; }
+  .firm-intro { font-size: 15px; }
+  .section-sub, .section-sub-light { font-size: 15px; }
   .solutions-home-grid { grid-template-columns: 1fr 1fr; }
   .pillars-grid { grid-template-columns: 1fr 1fr 1fr; }
   .pillar { padding: 32px 24px; }
@@ -354,7 +354,7 @@ footer::before{content:'';position:absolute;inset:0;background:repeating-linear-
   #team .team-bio-wrap { grid-template-columns: 200px 1fr; gap: 48px; }
   .team-photo { width: 200px !important; height: 246px !important; }
   .team-stats-bar { grid-template-columns: repeat(4,1fr); }
-  .team-stat-num { font-size: 36px; }
+  .team-stat-num { font-size: 30px; }
   .diff-table-wrap { overflow-x: auto; }
   .intro-grid { max-width: 55%; }
   .footer-nav-group { gap: 36px; }
@@ -810,7 +810,7 @@ footer::before{content:'';position:absolute;inset:0;background:repeating-linear-
     </button>
     <div class="nav-menu">
       <div class="nav-item">
-        <a href="about.html" class="nav-link">About</a>
+        <a href="about.html" class="nav-link">About Us</a>
         <div class="nav-dropdown">
           <a href="about.html#firm">The Firm</a>
           <a href="about.html#team">Team</a>
@@ -821,7 +821,7 @@ footer::before{content:'';position:absolute;inset:0;background:repeating-linear-
         </div>
       </div>
       <div class="nav-item">
-        <a href="owners.html" class="nav-link">Owners</a>
+        <a href="owners.html" class="nav-link">For Owners</a>
         <div class="nav-dropdown">
           <a href="owners.html#criteria">Investment Criteria</a>
           <a href="owners.html#solutions">Solutions</a>
@@ -840,7 +840,7 @@ footer::before{content:'';position:absolute;inset:0;background:repeating-linear-
   <div class="nav-drawer-links">
     <div class="nav-drawer-item">
       <div class="nav-drawer-row" style="display:flex;align-items:center;justify-content:space-between;border:none;">
-        <a href="about.html" class="nav-drawer-link" style="flex:1;padding-right:0;">About</a>
+        <a href="about.html" class="nav-drawer-link" style="flex:1;padding-right:0;">About Us</a>
         <button class="nav-drawer-chevbtn" aria-label="Expand About menu" style="background:none;border:none;cursor:pointer;padding:18px 0 18px 16px;color:rgba(255,255,255,0.4);font-size:16px;font-family:var(--font-mono);">&#x2304;</button>
       </div>
       <div class="nav-drawer-sub">
@@ -854,7 +854,7 @@ footer::before{content:'';position:absolute;inset:0;background:repeating-linear-
     </div>
     <div class="nav-drawer-item">
       <div class="nav-drawer-row" style="display:flex;align-items:center;justify-content:space-between;border:none;">
-        <a href="owners.html" class="nav-drawer-link" style="flex:1;padding-right:0;color:var(--accent);">Owners</a>
+        <a href="owners.html" class="nav-drawer-link" style="flex:1;padding-right:0;color:var(--accent);">For Owners</a>
         <button class="nav-drawer-chevbtn" aria-label="Expand Owners menu" style="background:none;border:none;cursor:pointer;padding:18px 0 18px 16px;color:rgba(255,255,255,0.4);font-size:16px;font-family:var(--font-mono);">&#x2304;</button>
       </div>
       <div class="nav-drawer-sub">
@@ -1053,7 +1053,7 @@ footer::before{content:'';position:absolute;inset:0;background:repeating-linear-
       </div>
       <div class="footer-nav-group">
         <div>
-          <div class="footer-col-head">About</div>
+          <div class="footer-col-head">About Us</div>
           <div class="footer-links">
             <a href="about.html#firm">The Firm</a>
             <a href="about.html#team">Team</a>
@@ -1064,7 +1064,7 @@ footer::before{content:'';position:absolute;inset:0;background:repeating-linear-
           </div>
         </div>
         <div>
-          <div class="footer-col-head">Owners</div>
+          <div class="footer-col-head">For Owners</div>
           <div class="footer-links">
             <a href="owners.html#criteria">Investment Criteria</a>
             <a href="owners.html#solutions">Solutions</a>
