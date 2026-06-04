@@ -1,3 +1,4 @@
+// Cloudflare Pages OAuth handler
 export async function onRequestGet(context) {
   const { searchParams } = new URL(context.request.url);
   const code = searchParams.get('code');
