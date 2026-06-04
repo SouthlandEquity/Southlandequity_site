@@ -1296,11 +1296,23 @@ footer::before{content:"";position:absolute;inset:0;background:repeating-linear-
 }
 .purpose-desktop-image {
   width: 100%;
-  aspect-ratio: 4/3;
+  height: 480px;
   overflow: hidden;
   border-radius: 4px;
+  position: relative;
 }
-.purpose-desktop-image img { border-radius: 4px; }
+.purpose-desktop-image img {
+  border-radius: 4px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  display: block;
+  image-rendering: high-quality;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
 .purpose-torch-body p {
   font-size: 16px;
   line-height: 1.85;
@@ -1315,7 +1327,7 @@ footer::before{content:"";position:absolute;inset:0;background:repeating-linear-
     grid-template-columns: 1fr !important;
     gap: 24px !important;
   }
-  .purpose-desktop-image { order: 2; aspect-ratio: 16/9; }
+  .purpose-desktop-image { order: 2; height: 240px; display: block !important; }
   .purpose-torch-body { order: 1; }
   .purpose-torch-body p { font-size: 15px; line-height: 1.7; color: var(--text-body); }
   #purpose .values-purpose-heading { font-size: 22px !important; color: var(--green) !important; }
