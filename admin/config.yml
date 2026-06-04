@@ -2,7 +2,7 @@ backend:
   name: github
   repo: SouthlandEquity/Southlandequity_site
   branch: main
-  base_url: https://southlandequity-site.pages.dev
+    base_url: https://southlandequity.com
   auth_endpoint: api/auth
 
 media_folder: assets/images
