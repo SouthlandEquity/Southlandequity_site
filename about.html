@@ -109,22 +109,6 @@ section{scroll-margin-top:72px;}
 .team-bio-wrap{display:grid;grid-template-columns:260px 1fr;gap:64px;align-items:flex-start;margin-bottom:56px;}
 .team-photo{width:260px;height:320px;background:rgba(255,255,255,0.1);border-radius:3px;display:flex;align-items:center;justify-content:center;border:0.5px solid rgba(255,255,255,0.18);}
 .team-photo span{font-family:var(--font-display);font-size:44px;color:rgba(255,255,255,0.35);}
-/* Team photo image fix */
-.team-photo {
-  display: block !important;
-  overflow: hidden;
-  position: relative;
-}
-.team-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  display: block;
-  position: absolute;
-  top: 0; left: 0;
-}
-
 .team-title{font-family:var(--font-mono);font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:28px;}
 .team-bio-text p{font-size:16px;line-height:1.85;color:rgba(255,255,255,0.78);font-weight:300;margin-bottom:20px;}
 .team-bio-text p:last-child{margin-bottom:0;}
@@ -614,6 +598,54 @@ section > .container{width:100%;padding-top:100px;padding-bottom:260px;}
 /* ── RESPONSIVE (v46 ships no breakpoints; this collapses the multi-column
       grids that otherwise overflow narrow screens. Scoped to About-page
       sections by ID so the Differentiators section is left untouched.) ── */
+@media (max-width:768px){
+  .nav-inner{height:auto;flex-wrap:wrap;gap:8px;padding-top:12px;padding-bottom:12px;}
+  .nav-logo{font-size:20px;}
+  .nav-menu{flex-wrap:wrap;gap:2px;justify-content:flex-start;}
+  .nav-link{padding:7px 10px;font-size:11px;}
+  .nav-cta{margin-left:0;padding:9px 14px;}
+
+  .page-header,#firm,#team,#philosophy,#purpose,#core-values,
+  .page-header{padding:72px 0 60px;}
+  .page-header-heading{font-size:38px;}
+  .page-header-sub{font-size:16px;}
+
+  #firm,#team,#philosophy,#purpose,#core-values{padding-top:64px;padding-bottom:64px;}
+
+  #firm .section-heading{font-size:34px;}
+  #firm .firm-pillars-row{grid-template-columns:1fr;}
+  #firm .firm-intro{font-size:15px;}
+
+  #team .section-heading{font-size:34px;}
+  #team .team-bio-wrap{grid-template-columns:1fr;gap:28px;}
+  .team-photo{width:140px;height:170px;}
+  .team-stats{grid-template-columns:repeat(2,1fr);gap:26px 32px;}
+  .team-stat-num{font-size:34px;}
+  .team-stat-label{font-size:10px;}
+
+  .philosophy-statement{font-size:30px;}
+  .philosophy-note{font-size:17px;}
+  #philosophy .section-heading-light{font-size:30px;}
+  .approach-grid{grid-template-columns:1fr;gap:36px;}
+  .approach-head{min-height:0;}
+
+  #purpose .values-purpose-heading{font-size:32px;}
+  #purpose .values-purpose-heading .hb{display:none;}
+  .purpose-torch{grid-template-columns:1fr;gap:36px;}
+
+  .values-steps-row{flex-direction:column;gap:36px;}
+  .values-steps-row::before{display:none;}
+  .values-how-text{font-size:17px;}
+
+  .about-cta{padding:72px 0;}
+  .about-cta-heading{font-size:32px;}
+
+  .footer-top{flex-direction:column;gap:32px;}
+  .footer-nav-group{flex-wrap:wrap;gap:28px;}
+  .footer-bottom{flex-direction:column;gap:14px;align-items:flex-start;}
+}
+
+
 /* ── SHARED NAV ── */
 nav{position:sticky;top:0;z-index:100;background:var(--green);}
 .nav-inner,.container,.footer-inner{max-width:var(--page-max);margin-left:auto;margin-right:auto;padding-left:var(--gutter);padding-right:var(--gutter);}
@@ -798,15 +830,6 @@ footer::before{content:"";position:absolute;inset:0;background:repeating-linear-
 }
 
 /* ── LAPTOP ── */
-
-/* Sol cards equal height — both top and bottom sections */
-@media (min-width: 768px) {
-  .solutions-home-grid { align-items: stretch; }
-  .sol-card { display: flex; flex-direction: column; height: 100%; }
-  .sol-card-top { flex-shrink: 0; }
-  .sol-card-bottom { flex: 1; }
-}
-
 @media (min-width: 1024px) and (max-width: 1279px) {
   :root { --gutter: clamp(32px, 3.5vw, 56px); --page-max: 1100px; }
   .nav-inner { height: 68px; }
@@ -1078,6 +1101,13 @@ footer::before{content:"";position:absolute;inset:0;background:repeating-linear-
   .diff-table tbody td svg { width: 20px !important; height: 20px !important; }
   .diff-intro { text-align: left !important; }
   /* Remove the Southland column border highlight on mobile to avoid overlap */
+  .diff-table thead th:nth-child(2) {
+    border-radius: 0 !important;
+    border: none !important;
+    border-bottom: 1px solid var(--border) !important;
+  }
+  .diff-table tbody td:nth-child(2) { border: none !important; }
+  .diff-spacer td:nth-child(2) { border: none !important; }
 
   /* CRITERIA TABLE */
   .criteria-table td:first-child { width: 110px; font-size: 11px; padding-right: 12px; }
@@ -1158,143 +1188,26 @@ footer::before{content:"";position:absolute;inset:0;background:repeating-linear-
   .trust-items { margin-top: 20px; gap: 14px; }
   .trust-text { font-size: 13px; }
   .connect-cta-heading { font-size: 24px; }
-
-  /* Stats bar 2x2 grid — consistent borders all around */
-  .team-stats-bar { grid-template-columns: 1fr 1fr; border: 0.5px solid rgba(255,255,255,0.18); }
-  .team-stat-bar-item {
-    padding-left: 14px !important;
-    padding-top: 18px !important;
-    padding-bottom: 18px !important;
-    border-right: 0.5px solid rgba(255,255,255,0.18) !important;
-    border-bottom: 0.5px solid rgba(255,255,255,0.18) !important;
-    border-top: none !important;
-  }
-  .team-stat-bar-item:nth-child(2) { border-right: none !important; }
-  .team-stat-bar-item:nth-child(3) { border-bottom: none !important; }
-  .team-stat-bar-item:nth-child(4) { border-right: none !important; border-bottom: none !important; }
-  .team-stat-bar-item:last-child { border-right: none !important; }
-
-  /* Diff table — proper Southland column highlight on mobile */
-  .diff-table-wrap { overflow-x: auto !important; -webkit-overflow-scrolling: touch; }
-  .diff-table {
-    table-layout: auto !important;
-    width: 100% !important;
-    min-width: 320px !important;
-    font-size: 11px !important;
-  }
-  .diff-table thead th { padding: 6px 5px !important; font-size: 10px !important; white-space: normal !important; }
-  .diff-table thead th:first-child { width: auto !important; white-space: normal !important; text-align: left; }
-  .diff-table thead th:nth-child(2) {
-    border-top: 1.5px solid var(--green-mid) !important;
-    border-left: 1.5px solid var(--green-mid) !important;
-    border-right: 1.5px solid var(--green-mid) !important;
-    border-radius: 8px 8px 0 0 !important;
-  }
-  .diff-table tbody td { padding: 6px 5px !important; font-size: 11px !important; }
-  .diff-table tbody td:first-child { white-space: normal !important; width: auto !important; }
-  .diff-table tbody td:nth-child(2) {
-    border-left: 1.5px solid var(--green-mid) !important;
-    border-right: 1.5px solid var(--green-mid) !important;
-  }
-  .diff-spacer td:nth-child(2) {
-    border-left: 1.5px solid var(--green-mid) !important;
-    border-right: 1.5px solid var(--green-mid) !important;
-    border-bottom: 1.5px solid var(--green-mid) !important;
-    border-radius: 0 0 8px 8px !important;
-  }
-  .diff-table tbody td svg { width: 20px !important; height: 20px !important; }
-  .diff-intro { text-align: left !important; }
-
-  /* Reduce bottom padding on value-creation / growth playbook */
-  #value-creation > .container,
-  #value-creation .container { padding-bottom: 40px !important; }
-  /* Reduce top padding on journey section */
-  #journey > .container,
-  #journey .container { padding-top: 40px !important; }
-  /* Reduce top padding on FAQ */
-  #faq > .container,
-  #faq .container { padding-top: 40px !important; }
-  /* Also reduce the inline style padding on owners page sections */
-  [style*="padding:100px 0"] { padding-top: 52px !important; padding-bottom: 52px !important; }
-
 }
 
 /* ── LARGE DESKTOP (1280px+) ── */
 @media (min-width: 1280px) {
   .solutions-home-grid { align-items: stretch; }
-  .sol-card { display: flex; flex-direction: column; height: 100%; }
-  .sol-card-top { flex-shrink: 0; }
-  .sol-card-bottom { flex: 1; }
-  .team-stats-intro { padding-left: 32px; }
-}
   .sol-card { display: flex; flex-direction: column; }
   .sol-card-bottom { flex: 1; }
   .team-stats-intro { padding-left: 32px; }
 }
 
-/* Purpose mobile grid fix */
-.purpose-mobile-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: start;
-  margin-top: 60px;
-}
-
-/* Diff table — prevent column overlap on mobile */
-@media (max-width: 767px) {
-  .purpose-mobile-grid {
-    grid-template-columns: 1fr !important;
-    gap: 32px !important;
-  }
-  /* Show placeholder image on mobile as simple colored block */
-  .purpose-mobile-grid > div:last-child {
-    min-height: 200px !important;
-    display: flex !important;
-  }
-
-  /* Diff table — remove fixed layout, let it scroll naturally */
-  .diff-table {
-    table-layout: auto !important;
-    width: 100% !important;
-    min-width: 0 !important;
-    font-size: 11px !important;
-  }
-  .diff-table tbody td:first-child {
-    white-space: normal !important;
-    width: auto !important;
-    font-size: 11px !important;
-  }
-  .diff-table thead th:first-child {
-    width: auto !important;
-    white-space: normal !important;
-  }
-  .diff-table thead th, .diff-table tbody td {
-    padding: 7px 5px !important;
-  }
-  .diff-table tbody td svg, .diff-table thead th svg {
-    width: 20px !important;
-    height: 20px !important;
-  }
-  .diff-table-wrap {
-    overflow-x: visible !important;
-    width: 100% !important;
-  }
-  /* Make the nav About/Owners drawer items also link to page top */
-  /* (handled in HTML) */
-}
-
-
-/* Purpose desktop/laptop layout */
-.purpose-desktop-layout { margin-top: 60px; }
-.purpose-desktop-lower {
+/* ── Purpose section ── */
+.purpose-layout { margin-top: 60px; }
+.purpose-layout > .values-purpose-heading { margin-bottom: 48px; display: block; }
+.purpose-lower {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 64px;
   align-items: start;
-  margin-top: 0;
 }
-.purpose-desktop-image {
+.purpose-photo {
   width: 100%;
   height: 480px;
   overflow: hidden;
@@ -1302,37 +1215,120 @@ footer::before{content:"";position:absolute;inset:0;background:repeating-linear-
   position: relative;
   display: block;
 }
-.purpose-desktop-image img {
-  border-radius: 4px;
+.purpose-photo img {
+  position: absolute;
+  top: 0; left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center 40%;
   display: block;
-  image-rendering: high-quality;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  transform: translateZ(0);
 }
-.purpose-torch-body p {
+.purpose-text p {
   font-size: 16px;
   line-height: 1.85;
   color: var(--text-body);
   margin-bottom: 20px;
 }
-.purpose-torch-body p:last-child { margin-bottom: 0; }
+.purpose-text p:last-child { margin-bottom: 0; }
 
-/* On mobile — stack: heading, then body text, then image last */
+/* Team photo */
+.team-photo {
+  display: block !important;
+  overflow: hidden !important;
+  position: relative !important;
+  flex-shrink: 0 !important;
+}
+.team-photo img {
+  position: absolute !important;
+  top: 0 !important; left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center top !important;
+  display: block !important;
+}
+
+/* Operator track record */
+.team-stats-intro {
+  display: block !important;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding: 28px 0 18px 32px;
+}
+
+/* Blog images */
+.blog-card-img { opacity: 1 !important; }
+.blog-card-img span { display: none; }
+
+/* Sol cards equal height */
+.solutions-home-grid { align-items: stretch; }
+.sol-card { display: flex; flex-direction: column; }
+.sol-card-bottom { flex: 1; }
+
+/* Purpose laptop */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .purpose-photo { height: 400px; }
+  .team-stats-intro { padding-left: 0; }
+}
+/* Purpose tablet */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .purpose-lower { grid-template-columns: 1fr; gap: 32px; }
+  .purpose-photo { height: 320px; order: 2; }
+  .purpose-text { order: 1; }
+  .team-stats-intro { padding-left: 0; }
+}
+/* Purpose mobile */
 @media (max-width: 767px) {
-  .purpose-desktop-lower {
-    grid-template-columns: 1fr !important;
-    gap: 24px !important;
-  }
-  .purpose-desktop-image { order: 2; height: 240px; display: block !important; }
-  .purpose-torch-body { order: 1; }
-  .purpose-torch-body p { font-size: 15px; line-height: 1.7; color: var(--text-body); }
-  #purpose .values-purpose-heading { font-size: 22px !important; color: var(--green) !important; }
-  .purpose-desktop-layout { margin-top: 28px; }
+  .purpose-layout { margin-top: 28px; }
+  .purpose-lower { grid-template-columns: 1fr !important; gap: 20px !important; }
+  .purpose-photo { height: 220px !important; order: 2; display: block !important; }
+  .purpose-text { order: 1; }
+  .purpose-text p { font-size: 15px; line-height: 1.7; }
+  #purpose .values-purpose-heading { font-size: 22px !important; }
+  .team-stats-intro { padding-left: 14px !important; }
+
+  /* Stats bar 2x2 consistent borders */
+  .team-stats-bar { grid-template-columns: 1fr 1fr; border: 0.5px solid rgba(255,255,255,0.18); }
+  .team-stat-bar-item { padding-left: 14px !important; padding-top: 18px !important; padding-bottom: 18px !important; border-right: 0.5px solid rgba(255,255,255,0.18) !important; border-bottom: 0.5px solid rgba(255,255,255,0.18) !important; border-top: none !important; }
+  .team-stat-bar-item:nth-child(2) { border-right: none !important; }
+  .team-stat-bar-item:nth-child(3) { border-bottom: none !important; }
+  .team-stat-bar-item:nth-child(4) { border-right: none !important; border-bottom: none !important; }
+
+  /* Diff table */
+  .diff-table-wrap { overflow-x: auto !important; -webkit-overflow-scrolling: touch; }
+  .diff-table { table-layout: auto !important; width: 100% !important; min-width: 320px !important; font-size: 11px !important; }
+  .diff-table thead th { padding: 6px 5px !important; font-size: 10px !important; white-space: normal !important; }
+  .diff-table thead th:first-child { width: auto !important; }
+  .diff-table thead th:nth-child(2) { border-top: 1.5px solid var(--green-mid) !important; border-left: 1.5px solid var(--green-mid) !important; border-right: 1.5px solid var(--green-mid) !important; border-radius: 8px 8px 0 0 !important; }
+  .diff-table tbody td { padding: 6px 5px !important; font-size: 11px !important; }
+  .diff-table tbody td:nth-child(2) { border-left: 1.5px solid var(--green-mid) !important; border-right: 1.5px solid var(--green-mid) !important; }
+  .diff-spacer td:nth-child(2) { border-left: 1.5px solid var(--green-mid) !important; border-right: 1.5px solid var(--green-mid) !important; border-bottom: 1.5px solid var(--green-mid) !important; border-radius: 0 0 8px 8px !important; }
+  .diff-table tbody td svg { width: 20px !important; height: 20px !important; }
+  .diff-intro { text-align: left !important; }
+
+  /* Journey mobile */
+  .journey-steps { gap: 0; }
+  .journey-step { display: flex !important; flex-direction: column !important; padding: 0 0 28px 0; border-bottom: 0.5px solid rgba(255,255,255,0.12); gap: 0 !important; }
+  .journey-step:last-child { border-bottom: none; padding-bottom: 0; }
+  .step-marker { display: none !important; }
+  .step-content { padding: 24px 0 0 0; }
+  .step-content::before { content: attr(data-num); display: block; font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: var(--accent); margin-bottom: 8px; }
+  .step-title { font-size: 14px; margin-bottom: 8px; }
+  .step-body { font-size: 14px; line-height: 1.75; color: rgba(255,255,255,0.85); }
+}
+
+/* Sol cards equal height at all sizes */
+@media (min-width: 768px) {
+  .sol-card { display: flex; flex-direction: column; height: 100%; }
+  .sol-card-top { flex-shrink: 0; }
+  .sol-card-bottom { flex: 1; }
+}
+@media (min-width: 1280px) {
+  .team-stats-intro { padding-left: 32px; }
 }
 
 </style>
@@ -1378,9 +1374,9 @@ footer::before{content:"";position:absolute;inset:0;background:repeating-linear-
 <div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true" aria-label="Navigation">
   <div class="nav-drawer-links">
     <div class="nav-drawer-item">
-      <div class="nav-drawer-row" style="display:flex;align-items:center;justify-content:space-between;border:none;">
-        <a href="about.html" class="nav-drawer-link" style="flex:1;padding-right:0;color:var(--accent);">About</a>
-        <button class="nav-drawer-chevbtn" aria-label="Expand About menu" style="background:none;border:none;cursor:pointer;padding:18px 0 18px 16px;color:rgba(255,255,255,0.4);font-size:16px;font-family:var(--font-mono);">&#x2304;</button>
+      <div class="nav-drawer-row" style="display:flex;align-items:center;justify-content:space-between;">
+        <a href="about.html" class="nav-drawer-link" style="flex:1;color:var(--accent);">About</a>
+        <button class="nav-drawer-chevbtn" style="background:none;border:none;cursor:pointer;padding:18px 0 18px 16px;color:rgba(255,255,255,0.4);font-size:16px;font-family:var(--font-mono);">&#x2304;</button>
       </div>
       <div class="nav-drawer-sub">
         <a href="about.html#firm">The Firm</a>
@@ -1392,9 +1388,9 @@ footer::before{content:"";position:absolute;inset:0;background:repeating-linear-
       </div>
     </div>
     <div class="nav-drawer-item">
-      <div class="nav-drawer-row" style="display:flex;align-items:center;justify-content:space-between;border:none;">
-        <a href="owners.html" class="nav-drawer-link" style="flex:1;padding-right:0;">Owners</a>
-        <button class="nav-drawer-chevbtn" aria-label="Expand Owners menu" style="background:none;border:none;cursor:pointer;padding:18px 0 18px 16px;color:rgba(255,255,255,0.4);font-size:16px;font-family:var(--font-mono);">&#x2304;</button>
+      <div class="nav-drawer-row" style="display:flex;align-items:center;justify-content:space-between;">
+        <a href="owners.html" class="nav-drawer-link" style="flex:1;">Owners</a>
+        <button class="nav-drawer-chevbtn" style="background:none;border:none;cursor:pointer;padding:18px 0 18px 16px;color:rgba(255,255,255,0.4);font-size:16px;font-family:var(--font-mono);">&#x2304;</button>
       </div>
       <div class="nav-drawer-sub">
         <a href="owners.html#criteria">Investment Criteria</a>
@@ -1404,12 +1400,8 @@ footer::before{content:"";position:absolute;inset:0;background:repeating-linear-
         <a href="owners.html#faq">FAQ</a>
       </div>
     </div>
-    <div class="nav-drawer-item">
-      <a href="blog.html" class="nav-drawer-link" style="">Blog</a>
-    </div>
-    <div class="nav-drawer-item">
-      <a href="connect.html" class="nav-drawer-link" style="">Connect</a>
-    </div>
+    <div class="nav-drawer-item"><a href="blog.html" class="nav-drawer-link">Blog</a></div>
+    <div class="nav-drawer-item"><a href="connect.html" class="nav-drawer-link">Connect</a></div>
   </div>
   <a href="connect.html" class="nav-drawer-cta">Start a Conversation</a>
 </div>
@@ -1467,7 +1459,7 @@ footer::before{content:"";position:absolute;inset:0;background:repeating-linear-
     <h2 class="section-heading">Cameron Baird</h2>
     <div class="team-bio-wrap">
       <div class="team-left">
-        <div class="team-photo" style="display:block;position:relative;width:260px;height:320px;overflow:hidden;border-radius:3px;flex-shrink:0;"><img src="assets/images/Cam%20LinkedIn%202.jpeg" alt="Cameron Baird" onerror="this.src='assets/images/Cam%20LinkedIn%202.jpg'" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block;"></div>
+        <div class="team-photo" style="display:block;position:relative;width:260px;height:320px;overflow:hidden;border-radius:3px;flex-shrink:0;"><img src="assets/images/Cam%20LinkedIn%202.jpeg" alt="Cameron Baird" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block;"></div>
       </div>
       <div class="team-bio-text" style="padding-left:32px;">
         <div class="team-title">Founder, Southland Equity</div>
@@ -1553,14 +1545,13 @@ footer::before{content:"";position:absolute;inset:0;background:repeating-linear-
 <section id="purpose">
   <div class="container">
     <div class="section-label-light">Our Purpose</div>
-    <!-- Desktop/Laptop: heading full width, then image left + body right below -->
-    <div class="purpose-desktop-layout">
-      <h2 class="values-purpose-heading" style="margin-bottom:48px;">To give local businesses and their teams a <em>future</em> <em>worthy</em> of their <em>past</em>.</h2>
-      <div class="purpose-desktop-lower">
-        <div class="purpose-desktop-image">
-          <img src="assets/images/terry-granger-9V1q3dhnrOU-unsplash.jpg" onerror="this.src='assets/images/terry-granger-9V1q3dhnrOU-unsplash.jpeg'" alt="Atlanta, Georgia" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block;image-rendering:high-quality;-webkit-backface-visibility:hidden;backface-visibility:hidden;transform:translateZ(0);">
+    <div class="purpose-layout">
+      <h2 class="values-purpose-heading">To give local businesses and their teams a <em>future</em> <em>worthy</em> of their <em>past</em>.</h2>
+      <div class="purpose-lower">
+        <div class="purpose-photo">
+          <img src="assets/images/terry-granger-9V1q3dhnrOU-unsplash.jpg" alt="Atlanta, Georgia">
         </div>
-        <div class="purpose-torch-body">
+        <div class="purpose-text">
           <p>A local business isn't built on a spreadsheet. It is built with decades of early mornings, late nights, and the collective grit of a team that trusted a vision. It is a lifetime of skin in the game.</p>
           <p>Taking over that legacy is a weight we don't carry lightly. Our job isn't to walk in, change the locks, and treat the employees like line items. Our job is to protect what was built and give it the runway to climb higher.</p>
           <p>Ten years from now, we want every founder who has sold to us to look back at that company and feel just as proud — if not prouder — of what it has become as they did on the day they passed it on.</p>
@@ -1670,7 +1661,6 @@ footer::before{content:"";position:absolute;inset:0;background:repeating-linear-
   function openD(){drawer.classList.add('open');btn.classList.add('open');btn.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
   function closeD(){drawer.classList.remove('open');btn.classList.remove('open');btn.setAttribute('aria-expanded','false');document.body.style.overflow='';}
   btn.addEventListener('click',function(){drawer.classList.contains('open')?closeD():openD();});
-  // chevron buttons expand submenus
   drawer.querySelectorAll('.nav-drawer-chevbtn').forEach(function(cb){
     cb.addEventListener('click',function(){
       var item=cb.closest('.nav-drawer-item');
@@ -1679,12 +1669,7 @@ footer::before{content:"";position:absolute;inset:0;background:repeating-linear-
     });
   });
   document.addEventListener('keydown',function(e){if(e.key==='Escape')closeD();});
-  // close on sub-link click
-  drawer.querySelectorAll('.nav-drawer-sub a').forEach(function(a){
-    a.addEventListener('click',function(){closeD();});
-  });
-  // close on top-level page links
-  drawer.querySelectorAll('a.nav-drawer-link').forEach(function(a){
+  drawer.querySelectorAll('.nav-drawer-sub a,.nav-drawer-link').forEach(function(a){
     a.addEventListener('click',function(){closeD();});
   });
 })();
