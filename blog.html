@@ -102,6 +102,11 @@ footer::before{content:"";position:absolute;inset:0;pointer-events:none;}
 .blog-page-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px;}
 .blog-card{background:#fff;border:0.5px solid var(--border);border-radius:4px;overflow:hidden;text-decoration:none;display:block;transition:border-color 0.15s;}
 .blog-card:hover{border-color:var(--green-mid);}
+.blog-card .blog-title{font-family:var(--font-display);font-size:18px;line-height:1.35;color:var(--green);font-weight:400;margin-bottom:10px;}
+.blog-card .blog-excerpt{font-size:14px;line-height:1.65;color:var(--text-muted);margin-bottom:16px;}
+.blog-card .blog-tag{font-family:var(--font-mono);font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);background:rgba(59,125,113,0.08);border:0.5px solid rgba(59,125,113,0.2);border-radius:3px;padding:4px 10px;display:inline-block;margin-bottom:12px;}
+.blog-card .blog-read-more{font-family:var(--font-mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--green-mid);display:flex;align-items:center;gap:4px;}
+.blog-card:hover{border-color:var(--green-mid);}
 .blog-card-img{background:var(--green-mid);height:200px;display:flex;align-items:center;justify-content:center;opacity:0.45;}
 .blog-card-img span{font-family:var(--font-mono);font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:#fff;}
 .blog-card-body{padding:32px;}
@@ -996,47 +1001,7 @@ footer::before{content:'';position:absolute;inset:0;background:repeating-linear-
     });
 })();
 </script>
-</a><a href="#" class="blog-card">
-  <div class="blog-card-img"><img src="assets/images/alexander-grey-8lnbXtxFGZw-unsplash.jpg" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
-  <div class="blog-card-body">
-    <span class="blog-tag">Deal Process</span>
-    <div class="blog-title">What Is Seller Financing and Will It Be Part of My Deal?</div>
-    <div class="blog-excerpt">Seller financing comes up in almost every transaction. Understanding how it works before you are in a negotiation makes you a better-informed seller.</div>
-    <div class="blog-read-more">Read more <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d='M4.5 2l4.5 4.5-4.5 4.5' stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-  </div>
-</a><a href="#" class="blog-card">
-  <div class="blog-card-img"><img src="assets/images/dylan-gillis-KdeqA3aTnBY-unsplash.jpg" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
-  <div class="blog-card-body">
-    <span class="blog-tag">Deal Process</span>
-    <div class="blog-title">The Four Most Common Sticking Points Before a Deal Closes</div>
-    <div class="blog-excerpt">Most deals that fall apart do so for predictable reasons. Knowing what they are means fewer surprises on the path to closing day.</div>
-    <div class="blog-read-more">Read more <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d='M4.5 2l4.5 4.5-4.5 4.5' stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-  </div>
-</a><a href="#" class="blog-card">
-  <div class="blog-card-img"><img src="assets/images/jakub-zerdzicki-LNnmSumlwO4-unsplash.jpg" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
-  <div class="blog-card-body">
-    <span class="blog-tag">Deal Process</span>
-    <div class="blog-title">How Long Does It Actually Take to Sell a Business?</div>
-    <div class="blog-excerpt">Four to six months is the standard answer. Here is what actually drives the timeline and what you can do to make the process move faster.</div>
-    <div class="blog-read-more">Read more <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d='M4.5 2l4.5 4.5-4.5 4.5' stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-  </div>
-</a><a href="#" class="blog-card">
-  <div class="blog-card-img"><img src="assets/images/alexander-grey-8lnbXtxFGZw-unsplash.jpg" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
-  <div class="blog-card-body">
-    <span class="blog-tag">Your Legacy</span>
-    <div class="blog-title">What Happens to My Employees After I Sell?</div>
-    <div class="blog-excerpt">Employee continuity is one of the questions we hear most from sellers. Here is how we think about it and what we commit to.</div>
-    <div class="blog-read-more">Read more <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d='M4.5 2l4.5 4.5-4.5 4.5' stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-  </div>
-</a><a href="#" class="blog-card">
-  <div class="blog-card-img"><img src="assets/images/dylan-gillis-KdeqA3aTnBY-unsplash.jpg" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
-  <div class="blog-card-body">
-    <span class="blog-tag">Deal Process</span>
-    <div class="blog-title">What Is a Letter of Intent and What Does It Actually Mean?</div>
-    <div class="blog-excerpt">The LOI is one of the most important documents in any transaction. Here is what it does and does not obligate, and what to look for before you sign.</div>
-    <div class="blog-read-more">Read more <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d='M4.5 2l4.5 4.5-4.5 4.5' stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-  </div>
-</a></div>
+</div>
   </div>
 </section>
 
