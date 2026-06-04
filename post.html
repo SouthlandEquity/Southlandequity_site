@@ -150,7 +150,7 @@
       document.title = (m.title || 'Blog Post') + ' | Southland Equity';
       document.getElementById('postContent').innerHTML =
         '<a href="blog.html" class="post-back"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Back to Blog</a>'
-        + (m.category ? '<div class="post-tag" style="display:block;margin-top:32px;">' + m.category + '</div>' : '<div style="margin-top:32px;"></div>')
+        + (m.category ? '<div style="margin-top:32px;"><span class="post-tag">' + m.category + '</span></div>' : '<div style="margin-top:32px;"></div>')
         + '<h1 class="post-title">' + (m.title||'') + '</h1>'
         + '<div class="post-date">' + formatDate(m.date) + '</div>'
         + imgHtml
