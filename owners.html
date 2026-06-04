@@ -313,6 +313,15 @@ footer::before{content:'';position:absolute;inset:0;background:repeating-linear-
 }
 
 /* ── LAPTOP ── */
+
+/* Sol cards equal height — both top and bottom sections */
+@media (min-width: 768px) {
+  .solutions-home-grid { align-items: stretch; }
+  .sol-card { display: flex; flex-direction: column; height: 100%; }
+  .sol-card-top { flex-shrink: 0; }
+  .sol-card-bottom { flex: 1; }
+}
+
 @media (min-width: 1024px) and (max-width: 1279px) {
   :root { --gutter: clamp(32px, 3.5vw, 56px); --page-max: 1100px; }
   .nav-inner { height: 68px; }
@@ -584,13 +593,6 @@ footer::before{content:'';position:absolute;inset:0;background:repeating-linear-
   .diff-table tbody td svg { width: 20px !important; height: 20px !important; }
   .diff-intro { text-align: left !important; }
   /* Remove the Southland column border highlight on mobile to avoid overlap */
-  .diff-table thead th:nth-child(2) {
-    border-radius: 0 !important;
-    border: none !important;
-    border-bottom: 1px solid var(--border) !important;
-  }
-  .diff-table tbody td:nth-child(2) { border: none !important; }
-  .diff-spacer td:nth-child(2) { border: none !important; }
 
   /* CRITERIA TABLE */
   .criteria-table td:first-child { width: 110px; font-size: 11px; padding-right: 12px; }
@@ -671,11 +673,75 @@ footer::before{content:'';position:absolute;inset:0;background:repeating-linear-
   .trust-items { margin-top: 20px; gap: 14px; }
   .trust-text { font-size: 13px; }
   .connect-cta-heading { font-size: 24px; }
+
+  /* Stats bar 2x2 grid — consistent borders all around */
+  .team-stats-bar { grid-template-columns: 1fr 1fr; border: 0.5px solid rgba(255,255,255,0.18); }
+  .team-stat-bar-item {
+    padding-left: 14px !important;
+    padding-top: 18px !important;
+    padding-bottom: 18px !important;
+    border-right: 0.5px solid rgba(255,255,255,0.18) !important;
+    border-bottom: 0.5px solid rgba(255,255,255,0.18) !important;
+    border-top: none !important;
+  }
+  .team-stat-bar-item:nth-child(2) { border-right: none !important; }
+  .team-stat-bar-item:nth-child(3) { border-bottom: none !important; }
+  .team-stat-bar-item:nth-child(4) { border-right: none !important; border-bottom: none !important; }
+  .team-stat-bar-item:last-child { border-right: none !important; }
+
+  /* Diff table — proper Southland column highlight on mobile */
+  .diff-table-wrap { overflow-x: auto !important; -webkit-overflow-scrolling: touch; }
+  .diff-table {
+    table-layout: auto !important;
+    width: 100% !important;
+    min-width: 320px !important;
+    font-size: 11px !important;
+  }
+  .diff-table thead th { padding: 6px 5px !important; font-size: 10px !important; white-space: normal !important; }
+  .diff-table thead th:first-child { width: auto !important; white-space: normal !important; text-align: left; }
+  .diff-table thead th:nth-child(2) {
+    border-top: 1.5px solid var(--green-mid) !important;
+    border-left: 1.5px solid var(--green-mid) !important;
+    border-right: 1.5px solid var(--green-mid) !important;
+    border-radius: 8px 8px 0 0 !important;
+  }
+  .diff-table tbody td { padding: 6px 5px !important; font-size: 11px !important; }
+  .diff-table tbody td:first-child { white-space: normal !important; width: auto !important; }
+  .diff-table tbody td:nth-child(2) {
+    border-left: 1.5px solid var(--green-mid) !important;
+    border-right: 1.5px solid var(--green-mid) !important;
+  }
+  .diff-spacer td:nth-child(2) {
+    border-left: 1.5px solid var(--green-mid) !important;
+    border-right: 1.5px solid var(--green-mid) !important;
+    border-bottom: 1.5px solid var(--green-mid) !important;
+    border-radius: 0 0 8px 8px !important;
+  }
+  .diff-table tbody td svg { width: 20px !important; height: 20px !important; }
+  .diff-intro { text-align: left !important; }
+
+  /* Reduce bottom padding on value-creation / growth playbook */
+  #value-creation > .container,
+  #value-creation .container { padding-bottom: 40px !important; }
+  /* Reduce top padding on journey section */
+  #journey > .container,
+  #journey .container { padding-top: 40px !important; }
+  /* Reduce top padding on FAQ */
+  #faq > .container,
+  #faq .container { padding-top: 40px !important; }
+  /* Also reduce the inline style padding on owners page sections */
+  [style*="padding:100px 0"] { padding-top: 52px !important; padding-bottom: 52px !important; }
+
 }
 
 /* ── LARGE DESKTOP (1280px+) ── */
 @media (min-width: 1280px) {
   .solutions-home-grid { align-items: stretch; }
+  .sol-card { display: flex; flex-direction: column; height: 100%; }
+  .sol-card-top { flex-shrink: 0; }
+  .sol-card-bottom { flex: 1; }
+  .team-stats-intro { padding-left: 32px; }
+}
   .sol-card { display: flex; flex-direction: column; }
   .sol-card-bottom { flex: 1; }
   .team-stats-intro { padding-left: 32px; }
