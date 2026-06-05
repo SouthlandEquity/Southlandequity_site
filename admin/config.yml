@@ -22,13 +22,15 @@ collections:
         widget: select
         options:
           - Before You Sell
-          - Deal Process
           - Valuation
+          - Deal Process
           - Choosing a Buyer
           - Succession
           - Your Legacy
           - After the Sale
           - How We Think
+          - Seller Stories
+          - Industry Notes
       - { label: Excerpt, name: excerpt, widget: text, hint: "Short summary shown on the blog listing page." }
       - label: Featured Image
         name: image
