@@ -3,7 +3,7 @@ title: "What Earnout Actually Means — And When It Can Work in a Seller's Favor
 date: 2026-04-03
 category: "Deal Process"
 excerpt: "Earnouts have a bad reputation among sellers. Sometimes that reputation is earned. But there are situations where an earnout is the right structure — and understanding the difference matters."
-image: "alexander-grey-8lnbXtxFGZw-unsplash"
+image: "/assets/images/alexander-grey-8lnbXtxFGZw-unsplash.jpg"
 ---
 
 ## The word that makes sellers nervous

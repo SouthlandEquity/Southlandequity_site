@@ -3,7 +3,7 @@ title: "What Happens to Your Employees When You Sell Your Business"
 date: 2026-05-08
 category: "Before You Sell"
 excerpt: "For most business owners, the employee question is the hardest one. Here is an honest answer about what actually happens — and what you can and cannot control."
-image: "mario-gogh-VBLHICVh-lI-unsplash"
+image: "/assets/images/mario-gogh-VBLHICVh-lI-unsplash.jpg"
 ---
 
 ## The question nobody wants to ask out loud

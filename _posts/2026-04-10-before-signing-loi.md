@@ -3,7 +3,7 @@ title: "What Every Seller Should Understand Before Signing a Letter of Intent"
 date: 2026-04-10
 category: "Deal Process"
 excerpt: "A letter of intent feels like the finish line. It is actually the starting line. Here is what you need to understand before you put your signature on one."
-image: "scott-graham-OQMZwNd3ThU-unsplash"
+image: "/assets/images/scott-graham-OQMZwNd3ThU-unsplash.jpg"
 ---
 
 ## The LOI is not the deal — but it shapes everything that comes after

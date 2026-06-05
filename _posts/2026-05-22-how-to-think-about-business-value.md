@@ -3,7 +3,7 @@ title: "How to Think About What Your Business Is Worth Before You Talk to a Buye
 date: 2026-05-22
 category: "Valuation"
 excerpt: "Most business owners either overestimate or underestimate the value of what they have built — and both create problems. Here is a grounded way to think about it before anyone starts throwing numbers around."
-image: "jakub-zerdzicki-LNnmSumIwO4-unsplash"
+image: "/assets/images/jakub-zerdzicki-LNnmSumIwO4-unsplash.jpg"
 ---
 
 ## The number in your head is probably not the market number
