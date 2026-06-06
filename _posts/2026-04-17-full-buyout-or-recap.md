@@ -3,7 +3,7 @@ title: "Full Buyout or Recap: How to Think About Which Structure Is Right for Yo
 date: 2026-04-17
 category: "Deal Process"
 excerpt: "When you sell your business, you have more structural options than most owners realize. Understanding the difference between a full buyout and a recapitalization can change how you think about what you actually want."
-image: "/assets/images/pexels-furkanelveren-146565338.JPG"
+image: "/assets/images/pexels-furkanelveren-14656538.jpg"
 ---
 
 You have spent years, maybe decades, building something real. When it comes time to think about an exit, the first question most owners ask is some version of: what is my business worth? That is a reasonable place to start. But there is a question that comes before the number, and it shapes everything downstream: how much of the business do you actually want to sell?
