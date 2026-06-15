@@ -1325,7 +1325,11 @@ footer::before{content:"";position:absolute;inset:0;background:repeating-linear-
   .diff-table thead th:nth-child(2) { border-top: 1.5px solid var(--green-mid) !important; border-left: 1.5px solid var(--green-mid) !important; border-right: 1.5px solid var(--green-mid) !important; border-radius: 8px 8px 0 0 !important; }
   .diff-table tbody td { padding: 6px 5px !important; font-size: 11px !important; }
   .diff-table tbody td:nth-child(2) { border-left: 1.5px solid var(--green-mid) !important; border-right: 1.5px solid var(--green-mid) !important; }
-  .diff-spacer td:nth-child(2) { border-left: 1.5px solid var(--green-mid) !important; border-right: 1.5px solid var(--green-mid) !important; border-bottom: 1.5px solid var(--green-mid) !important; border-radius: 0 0 8px 8px !important; }
+  /* Close the Southland column box on the last data row so its bottom edge
+     always renders on mobile, and drop the empty spacer row (its bottom border
+     fails to paint, leaving the box open at the bottom) */
+  .diff-table tbody tr:nth-last-child(2) td:nth-child(2) { border-bottom: 1.5px solid var(--green-mid) !important; border-bottom-left-radius: 8px !important; border-bottom-right-radius: 8px !important; }
+  .diff-spacer { display: none !important; }
   .diff-table tbody td svg { width: 20px !important; height: 20px !important; }
   .diff-intro { text-align: left !important; }
 
